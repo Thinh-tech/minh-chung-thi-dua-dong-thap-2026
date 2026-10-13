@@ -1,0 +1,6 @@
+node_modules/
+firebase/functions/node_modules/
+*-private.json
+service-account*.json
+.firebase/
+*.log

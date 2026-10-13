@@ -1,0 +1,11 @@
+rules_version = '2';
+service firebase.storage {
+ match /b/{bucket}/o {
+  function member() { return request.auth != null && firestore.exists(/databases/(default)/documents/users/$(request.auth.uid)) && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.active == true && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.unitId == request.auth.token.unitId; }
+  match /evidence/{unitId}/{criterionId}/{fileName} {
+   allow read: if member();
+   allow create: if member() && (request.auth.token.admin == true || request.auth.token.unitId == unitId) && request.resource.size < 10485761 && request.resource.contentType.matches('application/pdf|image/jpeg|image/png|image/webp|application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+   allow update, delete: if false;
+  }
+ }
+}

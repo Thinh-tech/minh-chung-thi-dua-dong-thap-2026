@@ -1,0 +1,686 @@
+[
+  {
+    "id": "admin",
+    "name": "admin Tỉnh Đoàn",
+    "group": "g1",
+    "role": "admin"
+  },
+  {
+    "id": "dv001",
+    "name": "Phường An Bình",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv002",
+    "name": "Phường Bình Xuân",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv003",
+    "name": "Phường Cai Lậy",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv004",
+    "name": "Phường Cao Lãnh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv005",
+    "name": "Phường Đạo Thạnh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv006",
+    "name": "Phường Gò Công",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv007",
+    "name": "Phường Hồng Ngự",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv008",
+    "name": "Phường Long Thuận",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv009",
+    "name": "Phường Mỹ Ngãi",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv010",
+    "name": "Phường Mỹ Phong",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv011",
+    "name": "Phường Mỹ Phước Tây",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv012",
+    "name": "Phường Mỹ Tho",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv013",
+    "name": "Phường Mỹ Trà",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv014",
+    "name": "Phường Nhị Quý",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv015",
+    "name": "Phường Sa Đéc",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv016",
+    "name": "Phường Sơn Qui",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv017",
+    "name": "Phường Thanh Hòa",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv018",
+    "name": "Phường Thới Sơn",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv019",
+    "name": "Phường Thường Lạc",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv020",
+    "name": "Phường Trung An",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv021",
+    "name": "Xã An Hòa",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv022",
+    "name": "Xã An Hữu",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv023",
+    "name": "Xã An Long",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv024",
+    "name": "Xã An Phước",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv025",
+    "name": "Xã An Thạnh Thủy",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv026",
+    "name": "Xã Ba Sao",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv027",
+    "name": "Xã Bình Hàng Trung",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv028",
+    "name": "Xã Bình Ninh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv029",
+    "name": "Xã Bình Phú",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv030",
+    "name": "Xã Bình Thành",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv031",
+    "name": "Xã Bình Trưng",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv032",
+    "name": "Xã Cái Bè",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv033",
+    "name": "Xã Châu Thành",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv034",
+    "name": "Xã Chợ Gạo",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv035",
+    "name": "Xã Đốc Binh Kiều",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv036",
+    "name": "Xã Đồng Sơn",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv037",
+    "name": "Xã Gia Thuận",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv038",
+    "name": "Xã Gò Công Đông",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv039",
+    "name": "Xã Hậu Mỹ",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv040",
+    "name": "Xã Hiệp Đức",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv041",
+    "name": "Xã Hòa Long",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv042",
+    "name": "Xã Hội Cư",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv043",
+    "name": "Xã Hưng Thạnh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv044",
+    "name": "Xã Kim Sơn",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv045",
+    "name": "Xã Lai Vung",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv046",
+    "name": "Xã Lấp Vò",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv047",
+    "name": "Xã Long Bình",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv048",
+    "name": "Xã Long Định",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv049",
+    "name": "Xã Long Hưng",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv050",
+    "name": "Xã Long Khánh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv051",
+    "name": "Xã Long Phú Thuận",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv052",
+    "name": "Xã Long Tiên",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv053",
+    "name": "Xã Lương Hòa Lạc",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv054",
+    "name": "Xã Mỹ An Hưng",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv055",
+    "name": "Xã Mỹ Đức Tây",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv056",
+    "name": "Xã Mỹ Hiệp",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv057",
+    "name": "Xã Mỹ Lợi",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv058",
+    "name": "Xã Mỹ Quí",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv059",
+    "name": "Xã Mỹ Thành",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv060",
+    "name": "Xã Mỹ Thiện",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv061",
+    "name": "Xã Mỹ Thọ",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv062",
+    "name": "Xã Mỹ Tịnh An",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv063",
+    "name": "Xã Ngũ Hiệp",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv064",
+    "name": "Xã Phong Hòa",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv065",
+    "name": "Xã Phong Mỹ",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv066",
+    "name": "Xã Phú Cường",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv067",
+    "name": "Xã Phú Hựu",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv068",
+    "name": "Xã Phú Thành",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv069",
+    "name": "Xã Phú Thọ",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv070",
+    "name": "Xã Phương Thịnh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv071",
+    "name": "Xã Tam Nông",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv072",
+    "name": "Xã Tân Dương",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv073",
+    "name": "Xã Tân Điền",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv074",
+    "name": "Xã Tân Đông",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv075",
+    "name": "Xã Tân Hòa",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv076",
+    "name": "Xã Tân Hộ Cơ",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv077",
+    "name": "Xã Tân Hồng",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv078",
+    "name": "Xã Tân Hương",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv079",
+    "name": "Tân Khánh Trung",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv080",
+    "name": "Xã Tân Long",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv081",
+    "name": "Xã Tân Nhuận Đông",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv082",
+    "name": "Xã Tân Phú",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv083",
+    "name": "Xã Tân Phú Đông",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv084",
+    "name": "Xã Tân Phú Trung",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv085",
+    "name": "Xã Tân Phước 1",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv086",
+    "name": "Xã Tân Phước 2",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv087",
+    "name": "Xã Tân Phước 3",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv088",
+    "name": "Xã Tân Thành",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv089",
+    "name": "Xã Tân Thạnh",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv090",
+    "name": "Xã Tân Thới",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv091",
+    "name": "Xã Tân Thuận Bình",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv092",
+    "name": "Xã Thanh Bình",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv093",
+    "name": "Xã Thanh Hưng",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv094",
+    "name": "Xã Thanh Mỹ",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv095",
+    "name": "Xã Thạnh Phú",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv096",
+    "name": "Xã Tháp Mười",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv097",
+    "name": "Xã Thường Phước",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv098",
+    "name": "Xã Tràm Chim",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv099",
+    "name": "Xã Trường Xuân",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv100",
+    "name": "Xã Vĩnh Bình",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv101",
+    "name": "Xã Vĩnh Hựu",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv102",
+    "name": "Xã Vĩnh Kim",
+    "group": "g1",
+    "role": "unit"
+  },
+  {
+    "id": "dv103",
+    "name": "Đoàn Ủy ban nhân dân Tỉnh",
+    "group": "g5",
+    "role": "unit"
+  },
+  {
+    "id": "dv104",
+    "name": "Đoàn các cơ quan Đảng Tỉnh",
+    "group": "g4",
+    "role": "unit"
+  },
+  {
+    "id": "dv105",
+    "name": "Trường Cao đẳng Y tế Đồng Tháp",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv106",
+    "name": "Trường Cao đẳng cộng đồng Đồng Tháp",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv107",
+    "name": "Trường Đại học Đồng Tháp",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv108",
+    "name": "Trường Đại học Tiền Giang",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv109",
+    "name": "Trường Cao đẳng Tiền Giang",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv110",
+    "name": "Trường Cao đẳng Y tế Tiền Giang",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv111",
+    "name": "Trường Cao đẳng nông nghiệp Nam Bộ",
+    "group": "g2",
+    "role": "unit"
+  },
+  {
+    "id": "dv112",
+    "name": "Ban Thanh niên Công an Tỉnh",
+    "group": "g3",
+    "role": "unit"
+  },
+  {
+    "id": "dv113",
+    "name": "Đoàn Thanh niên Quân sự Tỉnh",
+    "group": "",
+    "role": "unit"
+  }
+]

@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function member() { return request.auth != null && exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.active == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.unitId == request.auth.token.unitId; }
+  function admin() { return member() && request.auth.token.admin == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'; }
+  match /users/{uid} { allow read: if member() && (request.auth.uid == uid || admin()); allow write: if false; }
+  match /units/{id} { allow read: if member(); allow write: if false; }
+  match /criteria/{id} { allow read: if member(); allow write: if false; }
+  match /submissions/{id} { allow read: if member(); allow write: if false; }
+  match /settings/{id} { allow read: if member(); allow write: if false; }
+  match /audits/{id} { allow read: if admin(); allow write: if false; }
+  match /resetArchives/{id} { allow read: if admin(); allow write: if false;
+   match /records/{recordId} { allow read: if admin(); allow write: if false; }
+  }
+  match /messages/{id} { allow read: if member() && request.auth.token.unitId in resource.data.participants; allow write: if false; }
+  match /{document=**} { allow read, write: if false; }
+ }
+}
