@@ -14,3 +14,6 @@
 .form-icon img{display:block;width:100%;height:100%;object-fit:contain}
 .version-label{display:inline-block;white-space:nowrap}
 .login-copyright{padding:0 16px;text-align:center;line-height:1.8}
+.own-password-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;flex-wrap:wrap}
+#own-password-error[hidden]{display:none}
+#own-password-hint{display:block;line-height:1.6;margin-top:6px;color:#61716b}
