@@ -13,6 +13,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.2.6",
+  "version": "1.2.7",
   "releaseNote": "Tự đổi mật khẩu tài khoản · Giới hạn ảnh 5 MB · Hiển thị ghi chú phiên bản"
 }

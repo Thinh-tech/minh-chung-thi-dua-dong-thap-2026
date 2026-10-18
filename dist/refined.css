@@ -21,3 +21,5 @@
 .login-copyright .release-note{margin-left:auto;margin-right:auto;max-width:420px}
 .app-footer{align-items:flex-start;gap:12px}
 .initiative-card p{margin:0;font-size:11px;line-height:1.85;color:#c7ddd0;overflow-wrap:break-word}
+.initiative-card::after{content:"2026";position:absolute;right:8px;bottom:-9px;font-size:58px;font-weight:800;line-height:1;color:#c7ddd0;opacity:.11;pointer-events:none;z-index:0}
+.initiative-card p{position:relative;z-index:1}
