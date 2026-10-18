@@ -1,8 +1,8 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.1.1** · Bổ sung huy hiệu Đoàn tại màn hình đăng nhập, danh mục và biểu tượng tab trình duyệt.
+Phiên bản **v1.2.0** · Tài khoản đơn vị và quản trị viên tự đổi mật khẩu tại mục **Đổi mật khẩu** trong danh mục. Cần nhập mật khẩu hiện tại, mật khẩu mới từ 10 đến 128 ký tự và xác nhận trùng khớp; Firebase xác thực lại trước khi đổi. Quên mật khẩu thì liên hệ quản trị viên. Không lưu mật khẩu mới vào mã nguồn, dữ liệu hồ sơ hoặc nhật ký.
 
-Ứng dụng có giao diện tiếng Việt dành cho máy tính và điện thoại. Ứng dụng đã kết nối Firebase **tidy-booking-zmln4** (ai-builder-project), cơ sở dữ liệu `(default)` tại Singapore. Đăng nhập bằng cách chọn đơn vị và nhập mật khẩu ở cột D của tệp Excel tài khoản gốc.
+Ứng dụng có giao diện tiếng Việt dành cho máy tính và điện thoại. Ứng dụng đã kết nối Firebase **tidy-booking-zmln4** (ai-builder-project), cơ sở dữ liệu `(default)` tại Singapore. Đăng nhập bằng cách chọn đơn vị và nhập mật khẩu khởi tạo ở cột D của tệp Excel tài khoản gốc. Nếu đã tự đổi mật khẩu, dùng mật khẩu mới.
 
 ## Đã xây dựng
 
@@ -36,7 +36,7 @@ Chỉ có Phần 1 được cung cấp. Không tự thêm tiêu chí khuyến kh
 
 ## Đăng nhập
 
-Mở ứng dụng, chọn **admin Tỉnh Đoàn** để quản trị hoặc tên đơn vị để nộp minh chứng. Mật khẩu ở cột D cùng dòng trong tệp Excel gốc. Dữ liệu nhập mới được lưu trên Firebase. Dữ liệu từng nhập ở chế độ trải nghiệm không tự chuyển thành hồ sơ thật.
+Mở ứng dụng, chọn **admin Tỉnh Đoàn** để quản trị hoặc tên đơn vị để nộp minh chứng. Mật khẩu khởi tạo ở cột D cùng dòng trong tệp Excel gốc; sau khi đổi, dùng mật khẩu mới. Dữ liệu nhập mới được lưu trên Firebase. Dữ liệu từng nhập ở chế độ trải nghiệm không tự chuyển thành hồ sơ thật.
 
 ## Triển khai Firebase
 
