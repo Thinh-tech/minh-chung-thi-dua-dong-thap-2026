@@ -1,6 +1,6 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.2.1** · Tài khoản đơn vị và quản trị viên tự đổi mật khẩu tại mục **Đổi mật khẩu** trong danh mục. Cần nhập mật khẩu hiện tại, mật khẩu mới từ 10 đến 128 ký tự và xác nhận trùng khớp; Firebase xác thực lại trước khi đổi. Quên mật khẩu thì liên hệ quản trị viên. Không lưu mật khẩu mới vào mã nguồn, dữ liệu hồ sơ hoặc nhật ký.
+Phiên bản **v1.2.2** · Tài khoản đơn vị và quản trị viên tự đổi mật khẩu tại mục **Đổi mật khẩu** trong danh mục. Cần nhập mật khẩu hiện tại, mật khẩu mới từ 10 đến 128 ký tự và xác nhận trùng khớp; Firebase xác thực lại trước khi đổi. Quên mật khẩu thì liên hệ quản trị viên. Không lưu mật khẩu mới vào mã nguồn, dữ liệu hồ sơ hoặc nhật ký.
 
 Ứng dụng có giao diện tiếng Việt dành cho máy tính và điện thoại. Ứng dụng đã kết nối Firebase **tidy-booking-zmln4** (ai-builder-project), cơ sở dữ liệu `(default)` tại Singapore. Đăng nhập bằng cách chọn đơn vị và nhập mật khẩu khởi tạo ở cột D của tệp Excel tài khoản gốc. Nếu đã tự đổi mật khẩu, dùng mật khẩu mới.
 
@@ -63,3 +63,7 @@ Yêu cầu Node.js 22 trở lên. Cài các phụ thuộc ở thư mục gốc b
 Mã ứng dụng ở `src/`, tài sản triển khai ở `dist/`, backend và quy tắc ở `firebase/`. Tệp `.openai/hosting.json` chứa định danh bản xem trước Sites, không phải cấu hình Firebase. Nếu tạo một Sites mới độc lập, không dùng lại định danh này.
 
 Tất cả người dùng đã cấp quyền xem được các hồ sơ, kể cả bản nháp, phù hợp mô hình dữ liệu dùng chung. Chat chỉ hai bên được xem. Nếu nghiệp vụ yêu cầu ẩn bản nháp hoặc tài liệu giữa các đơn vị, cần đổi quy tắc và truy vấn trước triển khai.
+
+## Phiên bản và ghi chú cập nhật
+
+Số phiên bản lấy từ package.json và được ghi chung vào bản giao diện khi chạy `npm run build`. Nếu nội dung nguồn, tài sản giao diện hoặc cấu hình thay đổi, quy trình xây dựng tự tăng số cuối (ví dụ 1.2.2 → 1.2.3); xây dựng lại cùng nội dung giữ nguyên phiên bản và ngày cập nhật. Có thể chủ động đặt phiên bản cao hơn trong package.json. Viết ghi chú mới trong trường `releaseNote`; nếu không đổi ghi chú khi có cập nhật, hệ thống dùng mô tả chung để tránh hiển thị lại nội dung cũ. Thông tin phát hành được lưu trong dist/release.json. Cần đẩy cả package.json và dist đã xây dựng lên GitHub để Vercel/Pages nhận đúng bản mới.
