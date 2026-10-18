@@ -1,8 +1,10 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.2.0** · Tài khoản đơn vị và quản trị viên tự đổi mật khẩu tại mục **Đổi mật khẩu** trong danh mục. Cần nhập mật khẩu hiện tại, mật khẩu mới từ 10 đến 128 ký tự và xác nhận trùng khớp; Firebase xác thực lại trước khi đổi. Quên mật khẩu thì liên hệ quản trị viên. Không lưu mật khẩu mới vào mã nguồn, dữ liệu hồ sơ hoặc nhật ký.
+Phiên bản **v1.2.1** · Tài khoản đơn vị và quản trị viên tự đổi mật khẩu tại mục **Đổi mật khẩu** trong danh mục. Cần nhập mật khẩu hiện tại, mật khẩu mới từ 10 đến 128 ký tự và xác nhận trùng khớp; Firebase xác thực lại trước khi đổi. Quên mật khẩu thì liên hệ quản trị viên. Không lưu mật khẩu mới vào mã nguồn, dữ liệu hồ sơ hoặc nhật ký.
 
 Ứng dụng có giao diện tiếng Việt dành cho máy tính và điện thoại. Ứng dụng đã kết nối Firebase **tidy-booking-zmln4** (ai-builder-project), cơ sở dữ liệu `(default)` tại Singapore. Đăng nhập bằng cách chọn đơn vị và nhập mật khẩu khởi tạo ở cột D của tệp Excel tài khoản gốc. Nếu đã tự đổi mật khẩu, dùng mật khẩu mới.
+
+Giới hạn tải mới: **5 MB mỗi ảnh JPG/PNG/WEBP**, **10 MB mỗi tệp PDF/DOCX/XLSX**, tối đa 10 tệp/điều kiện. Giới hạn ảnh được kiểm tra trên giao diện và Storage Security Rules. Tệp cũ không bị xóa hoặc chặn đọc bởi thay đổi này.
 
 ## Đã xây dựng
 
