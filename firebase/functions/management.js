@@ -24,6 +24,7 @@ export function managementFunctions({db,call,context,log}){
    const status=reply?data.status:'pending',at=FieldValue.serverTimestamp(),revision=(old.data()?.revision||0)+1;
    tx.set(ref,{unitId:data.unitId,criterionId:data.criterionId,status,revision,lastText:data.text.trim(),updatedAt:at,updatedBy:a.uid,criterionCode:criterion.data().code,criterionTitle:criterion.data().title,...(!old.exists?{createdAt:at}:{}),...(!reply?{expectedDate:data.expectedDate,reason:data.text.trim()}:{}),...(reply?{respondedAt:at,lastReply:data.text.trim()}:{})},{merge:true});
    tx.create(ref.collection('messages').doc(),{text:data.text.trim(),role:reply?'admin':'unit',actor:a.name,at,revision,...(!reply?{expectedDate:data.expectedDate}:{status})});
+   tx.set(db.doc('inboxes/'+(reply?data.unitId:'admin')+'/items/explanation-'+data.unitId+'-'+data.criterionId),{title:(reply?'Phản hồi giải trình: ':'Kiến nghị giải trình: ')+criterion.data().code,kind:'evidence',unitId:data.unitId,criterionId:data.criterionId,read:false,at});
    log(tx,a,reply?'Phản hồi giải trình':'Gửi kiến nghị, giải trình',unit,criterion.data().code);
   });return {ok:true};
  },reply);

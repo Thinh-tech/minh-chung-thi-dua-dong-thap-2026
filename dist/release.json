@@ -1,7 +1,7 @@
 {
-  "version": "1.4.1",
+  "version": "1.5.3",
   "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
-  "updatedAt": "2026-10-19T15:12:35.224Z",
-  "fingerprint": "97627901044eb4ad84e69aeb52b749422e0bed03de666e8fdd4bcc5b16d8d63d",
-  "sourceNote": "Quản lý bộ tiêu chí, lọc theo lĩnh vực và kiến nghị, giải trình sau khi khóa minh chứng."
+  "updatedAt": "2026-10-19T16:04:43.552Z",
+  "fingerprint": "ea3d10c69d6cfb1ef8c618f21bd686868e8e5539e47bfe51e1009f893181b540",
+  "sourceNote": "Thông báo, báo cáo, khen thưởng, hồ sơ đơn vị, tiện ích và menu thu gọn."
 }

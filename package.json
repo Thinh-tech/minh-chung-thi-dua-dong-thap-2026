@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.4.1",
-  "releaseNote": "Quản lý bộ tiêu chí, lọc theo lĩnh vực và kiến nghị, giải trình sau khi khóa minh chứng."
+  "version": "1.5.3",
+  "releaseNote": "Thông báo, báo cáo, khen thưởng, hồ sơ đơn vị, tiện ích và menu thu gọn."
 }

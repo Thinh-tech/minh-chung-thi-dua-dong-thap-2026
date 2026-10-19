@@ -2,6 +2,13 @@ rules_version = '2';
 service firebase.storage {
  match /b/{bucket}/o {
   function member() { return request.auth != null && firestore.exists(/databases/(default)/documents/users/$(request.auth.uid)) && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.active == true && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.unitId == request.auth.token.unitId; }
+  function admin() { return member() && request.auth.token.admin == true && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin'; }
+  function validFile() { return request.resource.size > 0 && request.resource.size <= 10485760 && (!request.resource.contentType.matches('image/.*') || request.resource.size <= 5242880) && request.resource.contentType.matches('application/pdf|image/jpeg|image/png|image/webp|application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); }
+  match /resources/{scope}/{target}/{owner}/{fileName} {
+   allow read: if member() && (scope == 'profile' || scope == 'banner' || (scope == 'shared' && (admin() || request.auth.token.unitId in firestore.get(/databases/(default)/documents/publications/$(target)).data.recipients)) || (scope == 'response' && (admin() || request.auth.token.unitId == owner)));
+   allow create: if member() && validFile() && ((scope == 'profile' && target == owner && (admin() || request.auth.token.unitId == owner) && request.resource.contentType.matches('image/jpeg|image/png|image/webp')) || (scope == 'banner' && admin() && owner == 'admin' && target == 'common' && request.resource.contentType.matches('image/jpeg|image/png|image/webp')) || (scope == 'shared' && admin() && owner == 'admin') || (scope == 'response' && request.auth.token.unitId == owner && owner in firestore.get(/databases/(default)/documents/publications/$(target)).data.recipients && firestore.get(/databases/(default)/documents/publications/$(target)).data.closed == false));
+   allow update, delete: if false;
+  }
   match /evidence/{unitId}/{criterionId}/{fileName} {
    allow read: if member();
    allow create: if member() && firestore.get(/databases/(default)/documents/settings/campaign).data.locked == false && (request.auth.token.admin == true || request.auth.token.unitId == unitId) && request.resource.size <= 10485760 && (!request.resource.contentType.matches('image/.*') || request.resource.size <= 5242880) && request.resource.contentType.matches('application/pdf|image/jpeg|image/png|image/webp|application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

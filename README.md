@@ -1,6 +1,19 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.2.2** · Tài khoản đơn vị và quản trị viên tự đổi mật khẩu tại mục **Đổi mật khẩu** trong danh mục. Cần nhập mật khẩu hiện tại, mật khẩu mới từ 10 đến 128 ký tự và xác nhận trùng khớp; Firebase xác thực lại trước khi đổi. Quên mật khẩu thì liên hệ quản trị viên. Không lưu mật khẩu mới vào mã nguồn, dữ liệu hồ sơ hoặc nhật ký.
+Phiên bản **v1.5.3**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Tính năng bổ sung v1.5
+
+- **Thông báo:** admin công bố văn bản và tệp cho toàn tỉnh, một khối hoặc các đơn vị được chọn. Chuông có số chưa đọc, đánh dấu đã đọc và công việc minh chứng đang chờ xử lý. Đây là thông báo trong ứng dụng, chưa phải thông báo nền khi trình duyệt đóng.
+- **Báo cáo:** tạo kỳ tháng, 3/6/9 tháng, năm hoặc chuyên đề. Admin tự định nghĩa chỉ tiêu kiểu số/văn bản, đơn vị tính, bắt buộc, hạn và đối tượng nhận; có thể dùng lại danh mục từ báo cáo trước. Không có danh mục chỉ tiêu chính thức được tự tạo sẵn. Đơn vị nhập số liệu, gửi kèm tệp; máy chủ ghi lần nhận đầu và lần cập nhật, đánh dấu nộp muộn. Admin xem đã/chưa nộp, xem hồ sơ, tải tệp và xuất Excel.
+- **Khen thưởng:** tạo đợt với điều kiện/đối tượng/hạn; đơn vị gửi nhiều tập thể và cá nhân cùng thành tích. Admin tổng hợp và xuất Excel; hệ thống không tự quyết định người được khen thưởng.
+- Đợt đã công bố giữ nguyên cấu trúc chỉ tiêu và đối tượng để bảo toàn hồ sơ; admin có thể đóng/mở nhận hồ sơ có xác nhận. Cần thay cấu trúc thì tạo đợt mới, dùng lại chỉ tiêu cũ khi phù hợp.
+- **Trung tâm tài khoản:** cập nhật địa chỉ, điện thoại, email, Bí thư, Phó Bí thư và ba ảnh theo thứ tự đại diện đơn vị/Bí thư/Phó Bí thư. Admin quản lý mọi hồ sơ; đơn vị chỉ sửa hồ sơ mình. Danh bạ hiển thị thông tin trong phạm vi tài khoản đã đăng nhập.
+- **Tiện ích:** Danh bạ tìm kiếm theo khối/cán bộ; Mẫu biểu phân loại và xem trước/tải xuống; liên kết phần mềm Mặt trận và Fanpage Tuổi trẻ Đồng Tháp.
+- **Giao diện:** xanh Đoàn #0072BC, giờ Việt Nam và lời chào theo buổi, banner dùng chung admin thay được (đề xuất 1920×480 px), xuất Excel ở cuối tổng quan; duyệt minh chứng nhóm theo đơn vị hoặc lĩnh vực.
+- Hồ sơ chi tiết báo cáo/khen thưởng được tải khi mở đợt; tài khoản đơn vị chỉ được đọc các đợt dành cho mình và hồ sơ của mình. Minh chứng và chat trước đây vẫn được giữ nguyên.
+
+Kiểm tra: 39 bài kiểm tra tự động; thử luồng báo cáo có tệp PDF → đơn vị nộp → admin xem trước/xuất Excel; thử khen thưởng tập thể/cá nhân, hồ sơ/danh bạ, menu desktop và điện thoại 390 px. Kiểm tra giao diện dùng dữ liệu trải nghiệm; chưa thực hiện thử tải 113 tài khoản đồng thời hoặc gửi báo cáo thử vào dữ liệu chính thức.
 
 Ứng dụng có giao diện tiếng Việt dành cho máy tính và điện thoại. Ứng dụng đã kết nối Firebase **tidy-booking-zmln4** (ai-builder-project), cơ sở dữ liệu `(default)` tại Singapore. Đăng nhập bằng cách chọn đơn vị và nhập mật khẩu khởi tạo ở cột D của tệp Excel tài khoản gốc. Nếu đã tự đổi mật khẩu, dùng mật khẩu mới.
 

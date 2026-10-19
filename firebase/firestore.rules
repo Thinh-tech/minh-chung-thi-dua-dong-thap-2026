@@ -14,6 +14,12 @@ service cloud.firestore {
   }
   match /submissions/{id} { allow read: if member(); allow write: if false; }
   match /settings/{id} { allow read: if member(); allow write: if false; }
+  match /profiles/{id} { allow read: if member(); allow write: if false; }
+  match /publications/{id} {
+   allow read: if member() && (admin() || request.auth.token.unitId in resource.data.recipients); allow write: if false;
+   match /responses/{unitId} { allow read: if member() && (admin() || request.auth.token.unitId == unitId); allow write: if false; }
+  }
+  match /inboxes/{unitId}/items/{id} { allow read: if member() && request.auth.token.unitId == unitId; allow write: if false; }
   match /audits/{id} { allow read: if admin(); allow write: if false; }
   match /resetArchives/{id} { allow read: if admin(); allow write: if false;
    match /records/{recordId} { allow read: if admin(); allow write: if false; }
