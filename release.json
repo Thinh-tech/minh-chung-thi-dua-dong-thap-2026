@@ -1,7 +1,7 @@
 {
-  "version": "1.2.7",
-  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
-  "updatedAt": "2026-10-18T03:34:31.221Z",
-  "fingerprint": "1815d0eb1ca427d669a9c25eac0f7372d21f9cd2112e6b66149903d6fc711bce",
-  "sourceNote": "Tự đổi mật khẩu tài khoản · Giới hạn ảnh 5 MB · Hiển thị ghi chú phiên bản"
+  "version": "1.3.0",
+  "note": "Xem trước ảnh, PDF, Word và Excel ngay trong hồ sơ minh chứng.",
+  "updatedAt": "2026-10-19T13:21:48.155Z",
+  "fingerprint": "8e9d863ab662c04720cefb11ccceee07ecfbf5e4e75c824391ab9b4bb1bdbcec",
+  "sourceNote": "Xem trước ảnh, PDF, Word và Excel ngay trong hồ sơ minh chứng."
 }
