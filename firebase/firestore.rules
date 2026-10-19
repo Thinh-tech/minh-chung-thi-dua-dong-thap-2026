@@ -5,7 +5,13 @@ service cloud.firestore {
   function admin() { return member() && request.auth.token.admin == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'; }
   match /users/{uid} { allow read: if member() && (request.auth.uid == uid || admin()); allow write: if false; }
   match /units/{id} { allow read: if member(); allow write: if false; }
-  match /criteria/{id} { allow read: if member(); allow write: if false; }
+  match /criteria/{id} { allow read: if member(); allow write: if false;
+   match /history/{version} { allow read: if admin(); allow write: if false; }
+  }
+  match /explanations/{id} {
+   allow read: if member() && (admin() || resource.data.unitId == request.auth.token.unitId); allow write: if false;
+   match /messages/{message} { allow read: if member() && (admin() || id.matches(request.auth.token.unitId + '__g[1-5]-.*')); allow write: if false; }
+  }
   match /submissions/{id} { allow read: if member(); allow write: if false; }
   match /settings/{id} { allow read: if member(); allow write: if false; }
   match /audits/{id} { allow read: if admin(); allow write: if false; }

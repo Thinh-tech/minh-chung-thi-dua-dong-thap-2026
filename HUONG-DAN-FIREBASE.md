@@ -95,3 +95,9 @@ Trước đợt thi đua chính thức, kiểm tra bằng quản trị viên và
 Không thay đổi thứ tự ID điều kiện sau khi đã có hồ sơ. Nếu được cung cấp văn bản sửa đổi, lập phiên bản tiêu chí và chuyển dữ liệu có kiểm soát. Thiết lập sao lưu Firestore theo chính sách đơn vị. Giới hạn tệp là 10 MB và 10 tệp/điều kiện. Tệp đã tải nhưng chưa được gắn vào hồ sơ có thể tồn tại trong Storage; nên kiểm kê và dọn tệp mồ côi theo chính sách lưu trữ, không tự động xóa tệp đang được tham chiếu.
 
 Không có tính năng AI tự chấm điểm hay tự sửa tiêu chí chính thức. Kết quả do quản trị viên quyết định, có lưu nhật ký.
+
+### Bản cập nhật quản lý bộ tiêu chí và giải trình
+
+Frontend đọc `criteria` theo thời gian thực, kế thừa tiêu chí ban đầu từ gói ứng dụng. Admin gọi `updateCriterion`; các phiên bản trước/sau lưu ở `criteria/{id}/history`, không xóa cứng tiêu chí hay hồ sơ. `saveSubmission` kiểm tra lại phiên bản/trạng thái tiêu chí trong giao dịch và lưu `criterionRevision`.
+
+Các hàm `sendExplanation`, `respondExplanation` lưu luồng ở `explanations/{unitId}__{criterionId}`, lịch sử bất biến trong `messages`. Rules chỉ cho đơn vị đọc giải trình của mình; admin được đọc toàn bộ. Client không có quyền ghi trực tiếp. Khi khóa, Storage Rules chặn tạo tệp mới; hàm lưu hồ sơ vẫn kiểm tra khóa, hạn nộp và quyền đơn vị. Không chạy lại tập lệnh seed trên cơ sở dữ liệu đang dùng vì sẽ ghi đè tiêu chí đã chỉnh sửa.

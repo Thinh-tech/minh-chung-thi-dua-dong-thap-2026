@@ -67,3 +67,11 @@ Tất cả người dùng đã cấp quyền xem được các hồ sơ, kể c�
 ## Phiên bản và ghi chú cập nhật
 
 Số phiên bản lấy từ package.json và được ghi chung vào bản giao diện khi chạy `npm run build`. Nếu nội dung nguồn, tài sản giao diện hoặc cấu hình thay đổi, quy trình xây dựng tự tăng số cuối (ví dụ 1.2.2 → 1.2.3); xây dựng lại cùng nội dung giữ nguyên phiên bản và ngày cập nhật. Có thể chủ động đặt phiên bản cao hơn trong package.json. Viết ghi chú mới trong trường `releaseNote`; nếu không đổi ghi chú khi có cập nhật, hệ thống dùng mô tả chung để tránh hiển thị lại nội dung cũ. Thông tin phát hành được lưu trong dist/release.json. Cần đẩy cả package.json và dist đã xây dựng lên GitHub để Vercel/Pages nhận đúng bản mới.
+
+## Quản lý tiêu chí và kiến nghị, giải trình
+
+Admin vào **Quản lý bộ tiêu chí** để thêm điều kiện, sửa mã, nội dung, nhóm, điểm tối đa, hướng dẫn và yêu cầu minh chứng. Bốn lĩnh vực gồm Tổ chức - Kiểm tra, Phong trào, Mặt trận Thanh thiếu nhi, Tuyên giáo - Hành chính; bộ lọc dùng được trong danh sách minh chứng, duyệt và giải trình. Phân loại ban đầu được gợi ý theo nhóm nội dung; admin có thể điều chỉnh từng điều kiện.
+
+**Ngừng áp dụng** cần xác nhận và có thể khôi phục. Điều kiện ngừng áp dụng không tính vào tiến độ/tổng điểm hiện hành; hồ sơ và tệp cũ vẫn được giữ, xem tại **Lịch sử**. Mỗi chỉnh sửa lưu phiên bản trước/sau và nhật ký. Không thể giảm điểm tối đa xuống thấp hơn điểm trong hồ sơ hiện có. Các điều kiện mới dùng mã định danh ổn định để không làm lẫn hồ sơ.
+
+Khi admin khóa hoặc hết hạn nộp, đơn vị không thể lưu nháp, gửi hoặc sửa minh chứng. Trong từng điều kiện có **Kiến nghị, giải trình**, cho phép gửi lý do và ngày dự kiến hoàn thành. Giải trình không mở lại quyền nộp và không cộng điểm. Nội dung được lưu riêng, chỉ đơn vị sở hữu và admin được xem; không tự xóa sau 7 ngày như chat. Admin giám sát tại **Kiến nghị, giải trình**, lọc lĩnh vực/khối/trạng thái, phản hồi hoặc kết thúc theo dõi. Đơn vị có thể tiếp tục giải trình khi đợt vẫn khóa; toàn bộ lịch sử được giữ. Báo cáo Excel có thêm lĩnh vực và trang kiến nghị, giải trình.

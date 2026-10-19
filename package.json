@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.3.1",
-  "releaseNote": "Giao diện xanh dương của Đoàn, đồng bộ thanh điều hướng, biểu đồ và các nút thao tác."
+  "version": "1.4.1",
+  "releaseNote": "Quản lý bộ tiêu chí, lọc theo lĩnh vực và kiến nghị, giải trình sau khi khóa minh chứng."
 }
