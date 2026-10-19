@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.5.3",
+  "version": "1.5.4",
   "releaseNote": "Thông báo, báo cáo, khen thưởng, hồ sơ đơn vị, tiện ích và menu thu gọn."
 }

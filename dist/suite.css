@@ -11,3 +11,6 @@
 .account-photo{width:100%;height:100%;object-fit:cover;border-radius:50%}.profile-photos{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px}.profile-photos figure{margin:0;text-align:center;width:120px}.profile-photos img{width:110px;height:130px;border:1px solid #d8e7f2;object-fit:cover;border-radius:10px;background:#edf5fb}.profile-photos figcaption{font-size:11px;color:#59768b;padding-top:8px}
 
 @media(max-width:650px){.top-avatar{display:flex}.topbar .crumb strong{max-width:118px}.top-actions{gap:4px}.notification-btn{padding-left:8px}}
+
+/* Keep the shared banner prominent and the campaign state compact. */
+.overview-banner{background:#fff;color:#244b68;border:1px solid #dbe7f0;padding:14px 20px;border-radius:11px;min-height:0;margin-bottom:20px}.overview-banner h2,.overview-banner p,.overview-banner .season-tag{display:none}.overview-banner .banner-tags{margin:0;gap:10px}.overview-banner .banner-tags span{background:#f1f7fc;color:#315a77;border:1px solid #dceaf5;font-size:11px;padding:8px 12px}.stats .stat{padding:18px}.stats .stat-value{margin:6px 0;font-size:30px}
