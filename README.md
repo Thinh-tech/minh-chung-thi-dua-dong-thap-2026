@@ -1,6 +1,6 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.5.5**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.5.6**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
 
 ## Tính năng bổ sung v1.5
 
@@ -13,7 +13,7 @@ Phiên bản **v1.5.5**. Menu trái chia thành Không gian làm việc, Quản 
 - **Giao diện:** xanh Đoàn #0072BC, giờ Việt Nam và lời chào theo buổi, banner dùng chung admin thay được (đề xuất 1920×480 px), xuất Excel ở cuối tổng quan; duyệt minh chứng nhóm theo đơn vị hoặc lĩnh vực.
 - Hồ sơ chi tiết báo cáo/khen thưởng được tải khi mở đợt; tài khoản đơn vị chỉ được đọc các đợt dành cho mình và hồ sơ của mình. Minh chứng và chat trước đây vẫn được giữ nguyên.
 
-Kiểm tra: 39 bài kiểm tra tự động; thử luồng báo cáo có tệp PDF → đơn vị nộp → admin xem trước/xuất Excel; thử khen thưởng tập thể/cá nhân, hồ sơ/danh bạ, menu desktop và điện thoại 390 px. Kiểm tra giao diện dùng dữ liệu trải nghiệm; chưa thực hiện thử tải 113 tài khoản đồng thời hoặc gửi báo cáo thử vào dữ liệu chính thức.
+Kiểm tra: 40 bài kiểm tra tự động; thử luồng báo cáo có tệp PDF → đơn vị nộp → admin xem trước/xuất Excel; thử khen thưởng tập thể/cá nhân, hồ sơ/danh bạ, menu desktop và điện thoại 390 px. Kiểm tra giao diện dùng dữ liệu trải nghiệm; chưa thực hiện thử tải 113 tài khoản đồng thời hoặc gửi báo cáo thử vào dữ liệu chính thức.
 
 Ứng dụng có giao diện tiếng Việt dành cho máy tính và điện thoại. Ứng dụng đã kết nối Firebase **tidy-booking-zmln4** (ai-builder-project), cơ sở dữ liệu `(default)` tại Singapore. Đăng nhập bằng cách chọn đơn vị và nhập mật khẩu khởi tạo ở cột D của tệp Excel tài khoản gốc. Nếu đã tự đổi mật khẩu, dùng mật khẩu mới.
 
@@ -88,3 +88,5 @@ Admin vào **Quản lý bộ tiêu chí** để thêm điều kiện, sửa mã,
 **Ngừng áp dụng** cần xác nhận và có thể khôi phục. Điều kiện ngừng áp dụng không tính vào tiến độ/tổng điểm hiện hành; hồ sơ và tệp cũ vẫn được giữ, xem tại **Lịch sử**. Mỗi chỉnh sửa lưu phiên bản trước/sau và nhật ký. Không thể giảm điểm tối đa xuống thấp hơn điểm trong hồ sơ hiện có. Các điều kiện mới dùng mã định danh ổn định để không làm lẫn hồ sơ.
 
 Khi admin khóa hoặc hết hạn nộp, đơn vị không thể lưu nháp, gửi hoặc sửa minh chứng. Trong từng điều kiện có **Kiến nghị, giải trình**, cho phép gửi lý do và ngày dự kiến hoàn thành. Giải trình không mở lại quyền nộp và không cộng điểm. Nội dung được lưu riêng, chỉ đơn vị sở hữu và admin được xem; không tự xóa sau 7 ngày như chat. Admin giám sát tại **Kiến nghị, giải trình**, lọc lĩnh vực/khối/trạng thái, phản hồi hoặc kết thúc theo dõi. Đơn vị có thể tiếp tục giải trình khi đợt vẫn khóa; toàn bộ lịch sử được giữ. Báo cáo Excel có thêm lĩnh vực và trang kiến nghị, giải trình.
+
+Khóa nộp minh chứng chỉ khóa việc đơn vị lưu/sửa/gửi và nộp lại. Admin vẫn duyệt, chấm điểm và trả hồ sơ đã gửi, kể cả sau hạn nộp; việc trả hồ sơ không tự mở lại quyền nộp của đơn vị.

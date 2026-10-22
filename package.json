@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.5.5",
-  "releaseNote": "Bổ sung thẻ xác minh quyền sở hữu Google Search Console."
+  "version": "1.5.6",
+  "releaseNote": "Làm rõ quyền admin duyệt, chấm điểm khi khóa tiếp nhận minh chứng."
 }
