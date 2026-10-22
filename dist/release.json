@@ -1,7 +1,7 @@
 {
-  "version": "1.5.4",
-  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
-  "updatedAt": "2026-10-19T16:08:51.678Z",
-  "fingerprint": "34a8cdc02055e94ce111d2f9a376ff06573e4568644c855af8e34104b577b7ab",
-  "sourceNote": "Thông báo, báo cáo, khen thưởng, hồ sơ đơn vị, tiện ích và menu thu gọn."
+  "version": "1.5.5",
+  "note": "Bổ sung thẻ xác minh quyền sở hữu Google Search Console.",
+  "updatedAt": "2026-10-22T04:08:59.051Z",
+  "fingerprint": "f678bb14626fc1da9a5293f6f111367ec43d3b7d917a4cf1afd2479c42d93adb",
+  "sourceNote": "Bổ sung thẻ xác minh quyền sở hữu Google Search Console."
 }
