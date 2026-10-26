@@ -4,7 +4,7 @@ import {managementFunctions} from '../firebase/functions/management.js';
 const criterion={id:'g1-001',group:'g1',code:'1.1',section:'Tuyên truyền',title:'Tiêu chí ban đầu',maxScore:5,area:'communications',evaluation:'Hướng dẫn',evidence:'Báo cáo',active:true,revision:0};
 const admin={admin:true,unitId:'admin',uid:'admin',name:'Admin'},unit={admin:false,unitId:'dv001',uid:'unit1',name:'Đơn vị 1'};
 function setup(){
- const original={unitId:'dv001',criterionId:'g1-001',note:'Hồ sơ ban đầu',files:[{name:'minh-chung.pdf',path:'evidence/dv001/g1-001/old.pdf',size:100}],status:'draft',selfScore:4,revision:1};
+ const original={area:'communications',unitId:'dv001',criterionId:'g1-001',note:'Hồ sơ ban đầu',files:[{name:'minh-chung.pdf',path:'evidence/dv001/g1-001/old.pdf',size:100}],status:'draft',selfScore:4,revision:1};
  const data=new Map([['criteria/g1-001',criterion],['units/dv001',{name:'Đơn vị 1',group:'g1'}],['settings/campaign',{locked:true}],['submissions/dv001__g1-001',original]]);let sequence=0;
  const snapshot=(path)=>({id:path.split('/').at(-1),exists:data.has(path),data:()=>data.get(path)});
  const collection=path=>({path,doc:()=>doc(path+'/'+(++sequence)),where:(field,op,value)=>({path,field,value})});

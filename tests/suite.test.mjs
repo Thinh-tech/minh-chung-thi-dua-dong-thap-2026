@@ -54,3 +54,11 @@ test('Profiles enforce ownership and attachments cannot reference another record
  await assert.rejects(()=>f.saveProfile({unitId:'dv001',photos:[{path:'resources/profile/dv002/dv002/x.jpg',name:'x.jpg',size:10}]},unit));
  await f.saveProfile({unitId:'dv002',secretary:'Bí thư'},admin);assert.equal(data.get('profiles/dv002').secretary,'Bí thư');
 });
+
+test('Soft deletion closes intake, preserves responses and files, rejects units and restores the prior state',async()=>{
+ const {data,f}=setup();await f.savePublication({...base,deadline:''},admin);const d={id:base.id,values:{f0:2},files:[],revision:0};await f.submitResponse(d,unit);const path='publications/report-1/responses/dv001',before=data.get(path);
+ await assert.rejects(()=>f.archivePublication({id:base.id,archived:true,revision:1},unit));await f.archivePublication({id:base.id,archived:true,revision:1},admin);
+ assert.equal(data.get('publications/report-1').archived,true);assert.equal(data.get('publications/report-1').closed,true);assert.deepEqual(data.get(path),before);
+ await assert.rejects(()=>f.submitResponse({...d,revision:1},unit));await assert.rejects(()=>f.closePublication({id:base.id,closed:false},admin));await assert.rejects(()=>f.archivePublication({id:base.id,archived:false,revision:1},admin));
+ await f.archivePublication({id:base.id,archived:false,revision:2},admin);assert.equal(data.get('publications/report-1').archived,false);assert.equal(data.get('publications/report-1').closed,false);assert.deepEqual(data.get(path),before);
+});

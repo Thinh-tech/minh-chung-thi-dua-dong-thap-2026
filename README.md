@@ -1,6 +1,17 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.5.6**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.6.1**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Cập nhật v1.6
+
+- Sửa ô tìm kiếm: giữ nguyên ô nhập và vị trí con trỏ trong khi lọc; không dựng lại ô giữa lúc bộ gõ tiếng Việt đang ghép chữ.
+- Xã Trường Xuân (`dv099`) dùng bộ tiêu chí xã, phường. Đã sửa danh mục và hồ sơ tài khoản Firebase; không xóa hồ sơ minh chứng.
+- Admin mở **Quản lý tài khoản → Thêm tài khoản cán bộ**, chọn một hoặc nhiều lĩnh vực và cấp riêng sáu quyền: xem minh chứng/giải trình, chấm điểm, yêu cầu bổ sung, quản lý tiêu chí, phản hồi giải trình, xuất Excel. Quyền được kiểm tra tại máy chủ, Firestore và Storage. Cán bộ không được quản lý tài khoản, khóa đợt, đặt lại dữ liệu hoặc truy cập các mục điều hành toàn tỉnh. Admin có thể sửa quyền, khóa hoạt động và đổi mật khẩu cán bộ.
+- Cán bộ đăng nhập bằng lựa chọn **Cán bộ phụ trách lĩnh vực**, nhập tên đăng nhập dạng `cb-ten-can-bo` và mật khẩu được cấp. Chỉ nhìn thấy minh chứng/giải trình trong lĩnh vực được phân công; quyền chấm điểm được cấp vẫn hoạt động khi khóa nộp minh chứng.
+- Admin xóa **Thông báo, Báo cáo, Khen thưởng** qua hộp xác nhận. Nội dung được chuyển vào **Thùng rác**, ẩn khỏi danh sách đơn vị và ngừng nhận hồ sơ; có thể khôi phục. Tệp và hồ sơ đã nộp được giữ lại. Đây không phải xóa vĩnh viễn.
+- Đơn vị phải nhập rõ **điểm tự chấm** trước khi lưu/gửi hồ sơ. Ô trống bị chặn; nhập số **0** vẫn hợp lệ.
+
+Kiểm tra v1.6: **46 bài kiểm tra tự động đạt**; kiểm tra giao diện bằng dữ liệu trải nghiệm cho tìm kiếm tiếng Việt, tạo/đăng nhập cán bộ và chấm điểm trong phạm vi quyền, xóa/khôi phục cả ba loại nội dung, điểm trống và điểm 0. Không tạo tài khoản hoặc hồ sơ thử trong Firebase chính thức; chưa chạy thử Firebase Emulator hoặc tải đồng thời 113 tài khoản.
 
 ## Tính năng bổ sung v1.5
 

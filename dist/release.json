@@ -1,7 +1,7 @@
 {
-  "version": "1.5.6",
-  "note": "Làm rõ quyền admin duyệt, chấm điểm khi khóa tiếp nhận minh chứng.",
-  "updatedAt": "2026-10-22T14:04:08.201Z",
-  "fingerprint": "aab00bbc3b3cad3fde78e521b63a15427895f5ea2aad511d47fc751be0f7db28",
-  "sourceNote": "Làm rõ quyền admin duyệt, chấm điểm khi khóa tiếp nhận minh chứng."
+  "version": "1.6.1",
+  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
+  "updatedAt": "2026-10-26T15:47:51.455Z",
+  "fingerprint": "fc3a5310962ec85117c6addd72cbfc53d812a84d3c755ceff0ee1230f8408689",
+  "sourceNote": "Sửa tìm kiếm tiếng Việt, bộ xã Trường Xuân, phân quyền cán bộ, thùng rác nội dung và bắt buộc điểm tự chấm."
 }
