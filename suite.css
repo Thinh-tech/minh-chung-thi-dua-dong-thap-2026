@@ -16,3 +16,6 @@
 .overview-banner{background:#fff;color:#244b68;border:1px solid #dbe7f0;padding:14px 20px;border-radius:11px;min-height:0;margin-bottom:20px}.overview-banner h2,.overview-banner p,.overview-banner .season-tag{display:none}.overview-banner .banner-tags{margin:0;gap:10px}.overview-banner .banner-tags span{background:#f1f7fc;color:#315a77;border:1px solid #dceaf5;font-size:11px;padding:8px 12px}.stats .stat{padding:18px}.stats .stat-value{margin:6px 0;font-size:30px}
 
 .staff-management{margin:22px 0 28px}.staff-permissions{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:15px 0 24px}.staff-permissions label{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.8;padding:10px;border:1px solid #dce9f3;border-radius:9px;background:#f7fbfe}.staff-permissions input{width:17px;height:17px;margin-top:2px;flex-shrink:0}.field[hidden]{display:none!important}input[required]:placeholder-shown{border-color:#bccedb}.profile-summary p{line-height:1.9;margin:15px 0}.staff-management .card-head{flex-wrap:wrap;gap:12px}@media(max-width:650px){.staff-permissions{grid-template-columns:1fr}.staff-management .card-head{align-items:flex-start}}
+
+#review-criterion{max-width:100%;min-width:0;flex:1 1 290px;width:290px;text-overflow:ellipsis}
+@media(max-width:600px){#review-criterion{width:100%;flex-basis:100%}}

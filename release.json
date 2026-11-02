@@ -1,7 +1,7 @@
 {
-  "version": "1.6.2",
-  "note": "Admin chấm lại hồ sơ đã duyệt, lưu điểm và nhận xét cũ trong nhật ký.",
-  "updatedAt": "2026-11-02T09:57:25.754Z",
-  "fingerprint": "bd418a380de3f27abe13e7ae67c6baa45a9be2206346d3be1a5ae6da03a623b8",
-  "sourceNote": "Admin chấm lại hồ sơ đã duyệt, lưu điểm và nhận xét cũ trong nhật ký."
+  "version": "1.6.3",
+  "note": "Phân quyền chấm lại cho cán bộ và lọc hồ sơ chấm điểm theo từng tiêu chí.",
+  "updatedAt": "2026-11-02T14:27:45.011Z",
+  "fingerprint": "2466225674caacb80661059db0e6c4bbf689efc1c220ee0fb4f3742a123489ab",
+  "sourceNote": "Phân quyền chấm lại cho cán bộ và lọc hồ sơ chấm điểm theo từng tiêu chí."
 }
