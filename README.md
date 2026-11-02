@@ -1,12 +1,20 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.6.2**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.6.3**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Cấp quyền chấm lại và lọc tiêu chí v1.6.3
+
+- Admin mở **Quản lý tài khoản → Sửa quyền / mật khẩu**, tích **Chấm lại điểm đã duyệt** và lưu phân quyền. Quyền mới không tự cấp cho tài khoản cũ; chỉ áp dụng trong lĩnh vực được phân công. Có thể cấp/thu hồi riêng với quyền chấm lần đầu. Mỗi lần chấm lại vẫn kiểm tra quyền và phiên bản hồ sơ tại máy chủ, lưu nhật ký điểm/nhận xét cũ và mới, và hoạt động khi khóa nộp.
+- Trong **Duyệt & chấm điểm**, dùng **Lọc tiêu chí** để chọn 1.1, 1.2… Danh sách xổ xuống chia theo từng bộ tiêu chí, kèm nội dung rút gọn; cùng mã 1.1 ở các khối khác nhau được tách riêng. Bộ lọc kết hợp với khối, lĩnh vực, trạng thái và ô tìm kiếm, chỉ hiện các tiêu chí trong phạm vi được xem.
+- Chọn một tiêu chí để hiện hồ sơ của mọi đơn vị phù hợp. Sau khi chấm, hồ sơ rời danh sách chờ; lựa chọn tiêu chí được giữ để chấm tiếp. Không có hồ sơ vẫn giữ bộ lọc, không tự nhảy sang tiêu chí khác. Khi đổi khối/lĩnh vực làm tiêu chí không còn phù hợp, bộ lọc trở về Tất cả tiêu chí.
+
+Kiểm tra v1.6.3: **52 bài kiểm tra tự động đạt**; thử admin cấp quyền, cán bộ chấm lại, lọc riêng tiêu chí 1.1 qua hai đơn vị và chấm lần lượt đến hết, vẫn giữ riêng hồ sơ 1.2. Kiểm tra giao diện dùng dữ liệu trải nghiệm, không thay quyền cán bộ hoặc điểm thi đua chính thức.
 
 ## Chấm lại điểm v1.6.2
 
 Admin mở **Duyệt & chấm điểm → Đã chấm điểm → Chấm lại**. Trong hồ sơ, chọn **Chấm lại** để mở sửa điểm, điều chỉnh điểm/nhận xét rồi bấm **Lưu điểm chấm lại**. Điểm mới cập nhật vào hồ sơ đã duyệt, tổng hợp và xếp hạng. Điểm 0 hợp lệ; không nhận ô trống hoặc điểm ngoài giới hạn tiêu chí. Có thể chấm lại ngay cả khi khóa nộp hoặc hết hạn. Không thay đổi nội dung, tệp, đường dẫn và điểm tự chấm của đơn vị.
 
-Chỉ admin được chấm lại. Cán bộ giữ quyền chấm lần đầu trong lĩnh vực được cấp. Mỗi lần lưu kiểm tra phiên bản hồ sơ để ngăn ghi đè thay đổi đồng thời; nhật ký lưu người thực hiện, thời điểm, điểm/nhận xét trước và sau. Thông báo trong ứng dụng được cập nhật cho đơn vị.
+Từ v1.6.3, admin có thể cấp riêng quyền chấm lại cho cán bộ trong lĩnh vực được phân công. Mỗi lần lưu kiểm tra phiên bản hồ sơ để ngăn ghi đè thay đổi đồng thời; nhật ký lưu người thực hiện, thời điểm, điểm/nhận xét trước và sau. Thông báo trong ứng dụng được cập nhật cho đơn vị.
 
 Kiểm tra v1.6.2: **49 bài kiểm tra tự động đạt**; kiểm tra giao diện trải nghiệm sửa điểm 2 → 0 → 3, chặn điểm vượt mức, chấm lại khi khóa nộp và kiểm tra nhật ký. Không sửa điểm thi đua chính thức trong quá trình kiểm tra.
 
@@ -14,7 +22,7 @@ Kiểm tra v1.6.2: **49 bài kiểm tra tự động đạt**; kiểm tra giao d
 
 - Sửa ô tìm kiếm: giữ nguyên ô nhập và vị trí con trỏ trong khi lọc; không dựng lại ô giữa lúc bộ gõ tiếng Việt đang ghép chữ.
 - Xã Trường Xuân (`dv099`) dùng bộ tiêu chí xã, phường. Đã sửa danh mục và hồ sơ tài khoản Firebase; không xóa hồ sơ minh chứng.
-- Admin mở **Quản lý tài khoản → Thêm tài khoản cán bộ**, chọn một hoặc nhiều lĩnh vực và cấp riêng sáu quyền: xem minh chứng/giải trình, chấm điểm, yêu cầu bổ sung, quản lý tiêu chí, phản hồi giải trình, xuất Excel. Quyền được kiểm tra tại máy chủ, Firestore và Storage. Cán bộ không được quản lý tài khoản, khóa đợt, đặt lại dữ liệu hoặc truy cập các mục điều hành toàn tỉnh. Admin có thể sửa quyền, khóa hoạt động và đổi mật khẩu cán bộ.
+- Admin mở **Quản lý tài khoản → Thêm tài khoản cán bộ**, chọn một hoặc nhiều lĩnh vực và cấp riêng bảy quyền: xem minh chứng/giải trình, chấm điểm, chấm lại điểm, yêu cầu bổ sung, quản lý tiêu chí, phản hồi giải trình, xuất Excel. Quyền được kiểm tra tại máy chủ, Firestore và Storage. Cán bộ không được quản lý tài khoản, khóa đợt, đặt lại dữ liệu hoặc truy cập các mục điều hành toàn tỉnh. Admin có thể sửa quyền, khóa hoạt động và đổi mật khẩu cán bộ.
 - Cán bộ đăng nhập bằng lựa chọn **Cán bộ phụ trách lĩnh vực**, nhập tên đăng nhập dạng `cb-ten-can-bo` và mật khẩu được cấp. Chỉ nhìn thấy minh chứng/giải trình trong lĩnh vực được phân công; quyền chấm điểm được cấp vẫn hoạt động khi khóa nộp minh chứng.
 - Admin xóa **Thông báo, Báo cáo, Khen thưởng** qua hộp xác nhận. Nội dung được chuyển vào **Thùng rác**, ẩn khỏi danh sách đơn vị và ngừng nhận hồ sơ; có thể khôi phục. Tệp và hồ sơ đã nộp được giữ lại. Đây không phải xóa vĩnh viễn.
 - Đơn vị phải nhập rõ **điểm tự chấm** trước khi lưu/gửi hồ sơ. Ô trống bị chặn; nhập số **0** vẫn hợp lệ.

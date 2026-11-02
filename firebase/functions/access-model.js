@@ -1,5 +1,5 @@
 export const STAFF_PERMISSIONS=[
- ['viewEvidence','Xem minh chứng và giải trình'],['gradeEvidence','Duyệt và chấm điểm'],['returnEvidence','Yêu cầu bổ sung'],['manageCriteria','Thêm, sửa, ngừng áp dụng tiêu chí'],['replyExplanation','Phản hồi giải trình'],['exportData','Xuất Excel trong lĩnh vực phụ trách']
+ ['viewEvidence','Xem minh chứng và giải trình'],['gradeEvidence','Duyệt và chấm điểm'],['regradeEvidence','Chấm lại điểm đã duyệt'],['returnEvidence','Yêu cầu bổ sung'],['manageCriteria','Thêm, sửa, ngừng áp dụng tiêu chí'],['replyExplanation','Phản hồi giải trình'],['exportData','Xuất Excel trong lĩnh vực phụ trách']
 ];
 export const AREA_IDS=['organization','movement','youth','communications'];
 export const isStaff=a=>a?.role==='staff' || a?.staff===true;
