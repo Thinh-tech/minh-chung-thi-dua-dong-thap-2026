@@ -1,7 +1,7 @@
 {
-  "version": "1.6.1",
-  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
-  "updatedAt": "2026-10-26T15:47:51.455Z",
-  "fingerprint": "fc3a5310962ec85117c6addd72cbfc53d812a84d3c755ceff0ee1230f8408689",
-  "sourceNote": "Sửa tìm kiếm tiếng Việt, bộ xã Trường Xuân, phân quyền cán bộ, thùng rác nội dung và bắt buộc điểm tự chấm."
+  "version": "1.6.2",
+  "note": "Admin chấm lại hồ sơ đã duyệt, lưu điểm và nhận xét cũ trong nhật ký.",
+  "updatedAt": "2026-11-02T09:57:25.754Z",
+  "fingerprint": "bd418a380de3f27abe13e7ae67c6baa45a9be2206346d3be1a5ae6da03a623b8",
+  "sourceNote": "Admin chấm lại hồ sơ đã duyệt, lưu điểm và nhận xét cũ trong nhật ký."
 }

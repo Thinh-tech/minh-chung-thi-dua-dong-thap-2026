@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.6.1",
-  "releaseNote": "Sửa tìm kiếm tiếng Việt, bộ xã Trường Xuân, phân quyền cán bộ, thùng rác nội dung và bắt buộc điểm tự chấm."
+  "version": "1.6.2",
+  "releaseNote": "Admin chấm lại hồ sơ đã duyệt, lưu điểm và nhận xét cũ trong nhật ký."
 }

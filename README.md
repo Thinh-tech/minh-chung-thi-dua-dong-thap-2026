@@ -1,6 +1,14 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.6.1**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.6.2**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Chấm lại điểm v1.6.2
+
+Admin mở **Duyệt & chấm điểm → Đã chấm điểm → Chấm lại**. Trong hồ sơ, chọn **Chấm lại** để mở sửa điểm, điều chỉnh điểm/nhận xét rồi bấm **Lưu điểm chấm lại**. Điểm mới cập nhật vào hồ sơ đã duyệt, tổng hợp và xếp hạng. Điểm 0 hợp lệ; không nhận ô trống hoặc điểm ngoài giới hạn tiêu chí. Có thể chấm lại ngay cả khi khóa nộp hoặc hết hạn. Không thay đổi nội dung, tệp, đường dẫn và điểm tự chấm của đơn vị.
+
+Chỉ admin được chấm lại. Cán bộ giữ quyền chấm lần đầu trong lĩnh vực được cấp. Mỗi lần lưu kiểm tra phiên bản hồ sơ để ngăn ghi đè thay đổi đồng thời; nhật ký lưu người thực hiện, thời điểm, điểm/nhận xét trước và sau. Thông báo trong ứng dụng được cập nhật cho đơn vị.
+
+Kiểm tra v1.6.2: **49 bài kiểm tra tự động đạt**; kiểm tra giao diện trải nghiệm sửa điểm 2 → 0 → 3, chặn điểm vượt mức, chấm lại khi khóa nộp và kiểm tra nhật ký. Không sửa điểm thi đua chính thức trong quá trình kiểm tra.
 
 ## Cập nhật v1.6
 
