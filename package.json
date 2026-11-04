@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.6.3",
-  "releaseNote": "Phân quyền chấm lại cho cán bộ và lọc hồ sơ chấm điểm theo từng tiêu chí."
+  "version": "1.6.4",
+  "releaseNote": "Chỉ admin xuất báo cáo thi đua; admin thiết lập thời gian tiếp nhận giải trình."
 }

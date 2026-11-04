@@ -1,11 +1,12 @@
 export const STAFF_PERMISSIONS=[
- ['viewEvidence','Xem minh chứng và giải trình'],['gradeEvidence','Duyệt và chấm điểm'],['regradeEvidence','Chấm lại điểm đã duyệt'],['returnEvidence','Yêu cầu bổ sung'],['manageCriteria','Thêm, sửa, ngừng áp dụng tiêu chí'],['replyExplanation','Phản hồi giải trình'],['exportData','Xuất Excel trong lĩnh vực phụ trách']
+ ['viewEvidence','Xem minh chứng và giải trình'],['gradeEvidence','Duyệt và chấm điểm'],['regradeEvidence','Chấm lại điểm đã duyệt'],['returnEvidence','Yêu cầu bổ sung'],['manageCriteria','Thêm, sửa, ngừng áp dụng tiêu chí'],['replyExplanation','Phản hồi giải trình']
 ];
 export const AREA_IDS=['organization','movement','youth','communications'];
 export const isStaff=a=>a?.role==='staff' || a?.staff===true;
 export const isAdmin=a=>a?.admin===true || (a?.role==='admin'&&a.admin!==false);
 export function permitted(a,permission,criterion){
  if(isAdmin(a))return true;
+ if(permission==='exportData')return false;
  return isStaff(a)&&a.active!==false&&a.permissions?.includes(permission)===true&&(!criterion||a.areas?.includes(criterion.area)===true);
 }
 export function assertPermission(a,permission,criterion){if(!permitted(a,permission,criterion))throw Error('Bạn chưa được cấp quyền thao tác trong lĩnh vực này.');}

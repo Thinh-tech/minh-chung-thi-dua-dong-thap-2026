@@ -1,7 +1,7 @@
 {
-  "version": "1.6.3",
-  "note": "Phân quyền chấm lại cho cán bộ và lọc hồ sơ chấm điểm theo từng tiêu chí.",
-  "updatedAt": "2026-11-02T14:27:45.011Z",
-  "fingerprint": "2466225674caacb80661059db0e6c4bbf689efc1c220ee0fb4f3742a123489ab",
-  "sourceNote": "Phân quyền chấm lại cho cán bộ và lọc hồ sơ chấm điểm theo từng tiêu chí."
+  "version": "1.6.4",
+  "note": "Chỉ admin xuất báo cáo thi đua; admin thiết lập thời gian tiếp nhận giải trình.",
+  "updatedAt": "2026-11-04T07:22:05.035Z",
+  "fingerprint": "2b2f768bf961358751e52b7630e971bf6d19fb9284339633b3a67604ce7a8f05",
+  "sourceNote": "Chỉ admin xuất báo cáo thi đua; admin thiết lập thời gian tiếp nhận giải trình."
 }

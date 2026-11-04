@@ -1,3 +1,4 @@
+import {explanationsOpen} from './campaign-model.js';
 import {assertPermission,isStaff} from './access-model.js';
 export const AREAS=[{id:'organization',name:'Tổ chức - Kiểm tra'},{id:'movement',name:'Phong trào'},{id:'youth',name:'Mặt trận Thanh thiếu nhi'},{id:'communications',name:'Tuyên giáo - Hành chính'}];
 export const criterionIdPattern=/^g[1-5]-(?:\d{3}|[a-f0-9]{32})$/;
@@ -43,7 +44,7 @@ export function checkExplanation(actor,criterion,campaign,data,old,{reply=false,
  }else{
   if(actor.admin||isStaff(actor)||actor.unitId!==data.unitId)throw Error('Chỉ đơn vị sở hữu được gửi giải trình của mình.');
   if(criterion.active===false)throw Error('Tiêu chí đã ngừng áp dụng.');
-  if(!campaignClosed(campaign,now))throw Error('Mục giải trình được mở khi khóa minh chứng hoặc hết hạn nộp.');
+  if(!explanationsOpen(campaign,now))throw Error('Ngoài thời gian tiếp nhận giải trình do admin cho phép.');
   if(typeof data.expectedDate!=='string'||(data.expectedDate&&(!/^\d{4}-\d{2}-\d{2}$/.test(data.expectedDate)||(!Number.isFinite(Date.parse(data.expectedDate+'T00:00:00Z'))||new Date(data.expectedDate+'T00:00:00Z').toISOString().slice(0,10)!==data.expectedDate))))throw Error('Ngày dự kiến hoàn thành không hợp lệ.');
  }
 }

@@ -33,18 +33,19 @@ test('Dynamic catalog includes new sections and classifies legacy criteria',()=>
  const result=makeCatalog([{id:'g1',items:[c]}],{'g1-002':{...c,id:'g1-002',code:'2.1',section:'Nhóm mới',area:'movement'}});
  assert.equal(result.sets[0].items.length,2);assert.equal(result.sets[0].groups.length,2);assert.equal(result.all.get('g1-002').area,'movement');
 });
-test('Own-unit explanations work when locked or after Vietnam deadline, never while open',()=>{
- assert.doesNotThrow(()=>checkExplanation(unit,c,{locked:true},data));
- assert.throws(()=>checkExplanation(unit,c,{locked:false},data));
- const now=Date.parse('2026-11-01T10:01:00Z');
+test('Own-unit explanations require an explicit admin window independent of the intake lock',()=>{
+ const now=Date.parse('2026-11-01T10:01:00Z'),window={explanationsEnabled:true,explanationStart:'2026-11-01T17:00',explanationEnd:'2026-11-01T18:00'};
+ assert.throws(()=>checkExplanation(unit,c,{locked:true},data,null,{now}));
+ assert.throws(()=>checkExplanation(unit,c,{deadline:'2026-11-01T17:00'},data,null,{now}));
+ for(const locked of [true,false])assert.doesNotThrow(()=>checkExplanation(unit,c,{...window,locked},data,null,{now}));
  assert(campaignClosed({deadline:'2026-11-01T17:00'},now));
- assert.doesNotThrow(()=>checkExplanation(unit,c,{deadline:'2026-11-01T17:00'},data,null,{now}));
- assert.throws(()=>checkExplanation({...unit,unitId:'dv002'},c,{locked:true},data));
- assert.throws(()=>checkExplanation(admin,c,{locked:true},data));
+ assert.throws(()=>checkExplanation({...unit,unitId:'dv002'},c,window,data,null,{now}));
+ assert.throws(()=>checkExplanation(admin,c,window,data,null,{now}));
 });
+
 test('Explanation writes reject archived criteria, reset, empty content, invalid dates and stale revisions',()=>{
- for(const change of [{text:' '},{text:'x'.repeat(4001)},{expectedDate:'2026-02-31'},{revision:1}])assert.throws(()=>checkExplanation(unit,c,{locked:true},{...data,...change}));
- assert.throws(()=>checkExplanation(unit,{...c,active:false},{locked:true},data));
+ for(const change of [{text:' '},{text:'x'.repeat(4001)},{expectedDate:'2026-02-31'},{revision:1}])assert.throws(()=>checkExplanation(unit,c,{locked:true,explanationsEnabled:true,explanationStart:'2020-01-01T00:00',explanationEnd:'2099-12-31T23:59'},{...data,...change}));
+ assert.throws(()=>checkExplanation(unit,{...c,active:false},{locked:true,explanationsEnabled:true,explanationStart:'2020-01-01T00:00',explanationEnd:'2099-12-31T23:59'},data));
  assert.throws(()=>checkExplanation(unit,c,{locked:true,resetInProgress:true},data));
 });
 test('Admin replies require an existing thread and revision; units cannot mark it resolved',()=>{
