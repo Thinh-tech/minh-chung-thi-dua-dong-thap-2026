@@ -3,6 +3,9 @@ service cloud.firestore {
  match /databases/{database}/documents {
   function member() { return request.auth != null && exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.active == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.unitId == request.auth.token.unitId; }
   function admin() { return member() && request.auth.token.admin == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'; }
+  function observer() { return member() && request.auth.token.observer == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'observer'; }
+  function scoreWindow() { let c = get(/databases/$(database)/documents/settings/campaign).data; return c.get('explanationsEnabled',false) == true && c.get('resetInProgress',false) == false && c.get('explanationStartsAt',null) is timestamp && c.get('explanationEndsAt',null) is timestamp && request.time >= c.explanationStartsAt && request.time < c.explanationEndsAt; }
+  function unitScores() { return unitMember() && (get(/databases/$(database)/documents/units/$(request.auth.token.unitId)).data.group != 'g1' || scoreWindow()); }
   function staff() { return member() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'staff'; }
   function staffScope(area, permission) { return staff() && permission in get(/databases/$(database)/documents/users/$(request.auth.uid)).data.permissions && area in get(/databases/$(database)/documents/users/$(request.auth.uid)).data.areas; }
   function unitMember() { return member() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'unit'; }
@@ -13,15 +16,16 @@ service cloud.firestore {
    match /history/{version} { allow read: if admin() || staffScope(get(/databases/$(database)/documents/criteria/$(id)).data.area, 'manageCriteria'); allow write: if false; }
   }
   match /explanations/{id} {
-   allow read: if member() && (admin() || staffScope(resource.data.area, 'viewEvidence') || (unitMember() && resource.data.unitId == request.auth.token.unitId)); allow write: if false;
-   match /messages/{message} { allow read: if member() && (admin() || staffScope(get(/databases/$(database)/documents/explanations/$(id)).data.area, 'viewEvidence') || (unitMember() && id.matches(request.auth.token.unitId + '__g[1-5]-.*'))); allow write: if false; }
+   allow read: if member() && (admin() || observer() || staffScope(resource.data.area, 'viewEvidence') || (unitMember() && resource.data.unitId == request.auth.token.unitId)); allow write: if false;
+   match /messages/{message} { allow read: if member() && (admin() || observer() || staffScope(get(/databases/$(database)/documents/explanations/$(id)).data.area, 'viewEvidence') || (unitMember() && id.matches(request.auth.token.unitId + '__g[1-5]-.*'))); allow write: if false; }
   }
-  match /submissions/{id} { allow read: if admin() || unitMember() || staffScope(resource.data.area, 'viewEvidence'); allow write: if false; }
+  match /submissionViews/{id} { allow read: if unitMember(); allow write: if false; }
+  match /submissions/{id} { allow read: if admin() || observer() || unitScores() || staffScope(resource.data.area, 'viewEvidence'); allow write: if false; }
   match /settings/{id} { allow read: if member(); allow write: if false; }
   match /profiles/{id} { allow read: if member(); allow write: if false; }
   match /publications/{id} {
-   allow read: if member() && (admin() || (unitMember() && request.auth.token.unitId in resource.data.recipients)); allow write: if false;
-   match /responses/{unitId} { allow read: if member() && (admin() || (unitMember() && request.auth.token.unitId == unitId)); allow write: if false; }
+   allow read: if member() && (admin() || observer() || (unitMember() && request.auth.token.unitId in resource.data.recipients)); allow write: if false;
+   match /responses/{unitId} { allow read: if member() && (admin() || observer() || (unitMember() && request.auth.token.unitId == unitId)); allow write: if false; }
   }
   match /inboxes/{unitId}/items/{id} { allow read: if member() && request.auth.token.unitId == unitId; allow write: if false; }
   match /audits/{id} { allow read: if admin(); allow write: if false; }

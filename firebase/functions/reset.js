@@ -1,3 +1,4 @@
+import {writeSubmissionView} from './visibility-model.js';
 import {onCall,HttpsError} from 'firebase-functions/v2/https';
 import {FieldValue,Timestamp} from 'firebase-admin/firestore';
 import {validateReset,fingerprint} from './reset-policy.js';
@@ -15,7 +16,7 @@ export function resetFunctions(db,actor,opts){
   const ref=db.collection('resetRequests').doc();await ref.set({scope,scopeName,actorUid:a.uid,actor:a.name,counts,fingerprint:fingerprint(rows.docs),createdAt:Timestamp.now(),expiresAt:Timestamp.fromMillis(Date.now()+600000),status:'prepared'});
   return {requestId:ref.id,scope,scopeName,counts};
  });
- const commit=onCall({...opts,timeoutSeconds:540,memory:'512MiB'},async req=>{
+ const commit=onCall({...opts,timeoutSeconds:540,memory:'512MiB',cpu:'gcf_gen1',concurrency:1},async req=>{
   const a=await actor(req,true),id=req.data?.requestId;
   if(typeof id!=='string'||!/^[A-Za-z0-9]{20}$/.test(id))throw new HttpsError('invalid-argument','Yêu cầu đặt lại không hợp lệ.');
   const ref=db.doc('resetRequests/'+id),archive=db.doc('resetArchives/'+id);let job;
@@ -40,7 +41,7 @@ export function resetFunctions(db,actor,opts){
     throw new HttpsError('failed-precondition','Dữ liệu vừa thay đổi. Hãy xem lại số hồ sơ trước khi đặt lại.');
    }
    await archive.set({scope:job.scope,scopeName:job.scopeName,actor:a.name,actorUid:a.uid,count:job.counts.total,status:'running',createdAt:job.createdAt},{merge:true});
-   for(let i=0;i<rows.docs.length;i+=150){const batch=db.batch();for(const d of rows.docs.slice(i,i+150)){batch.set(archive.collection('records').doc(d.id),d.data());batch.delete(d.ref)}await batch.commit()}
+   for(let i=0;i<rows.docs.length;i+=150){const batch=db.batch();for(const d of rows.docs.slice(i,i+150)){batch.set(archive.collection('records').doc(d.id),d.data());batch.delete(d.ref);writeSubmissionView(db,batch,d.id,null)}await batch.commit()}
    await db.runTransaction(async tx=>{const [r,c]=await Promise.all([tx.get(ref),tx.get(campaign)]);if(c.data()?.resetJob!==id)throw Error('Không thể hoàn tất trạng thái đặt lại.');tx.update(campaign,{locked:r.data().previousLocked,resetInProgress:false,resetJob:FieldValue.delete(),resetScope:FieldValue.delete()});tx.update(ref,{status:'complete',leaseUntil:FieldValue.delete(),completedAt:FieldValue.serverTimestamp(),expiresAt:Timestamp.fromMillis(Date.now()+7*86400000)});tx.set(archive,{status:'complete',completedAt:FieldValue.serverTimestamp()},{merge:true});tx.create(db.collection('audits').doc(),{actor:a.name,actorUid:a.uid,action:'Đặt lại '+job.counts.total+' hồ sơ (đã lưu bản sao)',unit:job.scopeName,code:id,at:FieldValue.serverTimestamp()})});
    return {ok:true,count:job.counts.total,archiveId:id};
   }catch(e){await ref.set({leaseUntil:FieldValue.delete(),lastError:'Thao tác chưa hoàn tất; có thể tiếp tục từ thiết lập hệ thống.'},{merge:true});throw e instanceof HttpsError?e:new HttpsError('internal','Chưa hoàn tất đặt lại. Dữ liệu đã xử lý được lưu bản sao. Hãy chọn Tiếp tục trong Thiết lập hệ thống.');}

@@ -1,6 +1,15 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.6.4**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.7.2**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Công bố điểm và chế độ quan sát v1.7.2
+
+- Xã, phường chỉ xem điểm duyệt và bảng xếp hạng trong thời gian giải trình do admin bật và đặt lịch. Trước giờ bắt đầu, khi hết giờ hoặc admin tắt, các mục này hiện **Chưa công bố** hoặc được ẩn. Điểm tự chấm, hồ sơ và tiến độ vẫn xem được. Không thay đổi điểm đã chấm.
+- Quyền đọc Firebase kiểm tra thời gian tại máy chủ. Ngoài giờ, xã/phường chỉ đọc bản hồ sơ không chứa điểm duyệt; bản này được ghi cùng giao dịch với thao tác lưu, chấm, cập nhật lĩnh vực và đặt lại hồ sơ.
+- Chế độ quan sát đăng nhập bằng mã được cấp trong ô mật khẩu, không cần chọn tên đơn vị. Có thể xem toàn tỉnh, hồ sơ, báo cáo, điểm và xếp hạng; không có quyền sửa, gửi, chấm, quản lý tài khoản hoặc xuất báo cáo. Mã được xác thực bằng Firebase Authentication, không lưu trong mã nguồn.
+- Tài khoản quan sát không xuất hiện trong danh sách đơn vị/cán bộ và quản lý tài khoản của ứng dụng. Chủ dự án Firebase vẫn có thể kiểm tra danh tính và nhật ký trong hệ thống quản trị Firebase.
+
+Kiểm tra: **61 bài kiểm tra tự động đạt**; kiểm tra giao diện xã/phường trước và trong giờ trên dữ liệu trải nghiệm; đăng nhập quan sát thực tế, xem báo cáo/xếp hạng và kiểm tra máy chủ chặn ghi. Không sửa điểm, hồ sơ minh chứng hoặc lịch tiếp nhận chính thức để thử nghiệm. Chưa chạy Firebase Emulator hoặc kiểm thử tải đồng thời 113 tài khoản.
 
 ## Xuất báo cáo và thời gian giải trình v1.6.4
 

@@ -19,3 +19,5 @@
 
 #review-criterion{max-width:100%;min-width:0;flex:1 1 290px;width:290px;text-overflow:ellipsis}
 @media(max-width:600px){#review-criterion{width:100%;flex-basis:100%}}
+
+.observer-mode .notification-btn{display:none}

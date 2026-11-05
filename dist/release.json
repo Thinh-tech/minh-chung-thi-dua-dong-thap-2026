@@ -1,7 +1,7 @@
 {
-  "version": "1.6.4",
-  "note": "Chỉ admin xuất báo cáo thi đua; admin thiết lập thời gian tiếp nhận giải trình.",
-  "updatedAt": "2026-11-04T07:22:05.035Z",
-  "fingerprint": "2b2f768bf961358751e52b7630e971bf6d19fb9284339633b3a67604ce7a8f05",
-  "sourceNote": "Chỉ admin xuất báo cáo thi đua; admin thiết lập thời gian tiếp nhận giải trình."
+  "version": "1.7.2",
+  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
+  "updatedAt": "2026-11-05T14:06:49.824Z",
+  "fingerprint": "f9559ae0a9f70c3e25edd058aedf6a70c451fd31188a83ff505a3021c39c3bcb",
+  "sourceNote": "Khóa công bố điểm và xếp hạng xã phường theo đợt giải trình; bổ sung chế độ quan sát chỉ đọc."
 }

@@ -1,3 +1,4 @@
+import {writeSubmissionView} from './visibility-model.js';
 import {randomUUID} from 'node:crypto';
 import {FieldValue} from 'firebase-admin/firestore';
 import {normalizeCriterion,checkCriterionUpdate,checkExplanation,criterionIdPattern,inferArea} from './criteria-model.js';
@@ -12,7 +13,7 @@ export function managementFunctions({db,call,context,log}){
    checkCriterionUpdate(a,old.data(),{...normalized,id,revision:data.revision},others.docs.map(d=>({...d.data(),id:d.id})),records.docs.map(d=>d.data()),campaign.data());
    const next={...normalized,id,revision:(old.data()?.revision||0)+1,updatedBy:a.uid,updatedAt:FieldValue.serverTimestamp()};
    tx.set(ref,next,{merge:true});
-   for(const row of records.docs)tx.set(db.doc('submissions/'+row.id),{area:next.area},{merge:true});
+   for(const row of records.docs){tx.set(db.doc('submissions/'+row.id),{area:next.area},{merge:true});writeSubmissionView(db,tx,row.id,{...row.data(),area:next.area});}
    for(const row of threads.docs)tx.set(db.doc('explanations/'+row.id),{area:next.area},{merge:true});
    tx.create(ref.collection('history').doc(),{before:old.data()||null,after:next,actor:a.name,at:FieldValue.serverTimestamp()});
    log(tx,a,!old.exists?'Thêm tiêu chí':normalized.active===false?'Ngừng áp dụng tiêu chí':old.data().active===false?'Khôi phục tiêu chí':'Chỉnh sửa tiêu chí',normalized.group,normalized.code);
