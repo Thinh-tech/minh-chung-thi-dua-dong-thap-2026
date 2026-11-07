@@ -1,6 +1,12 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.7.2**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.7.3**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Công bố bảng xếp hạng v1.7.3
+
+Admin vào **Thiết lập hệ thống → Công bố bảng xếp hạng**, bật/tắt **Hiển thị bảng xếp hạng các đơn vị**, rồi bấm **Lưu công bố xếp hạng**. Mặc định ẩn nếu chưa bật. Cài đặt đồng bộ Firebase; khi tắt, menu và lối vào xếp hạng của các tài khoản khác được ẩn, người đang xem được đưa về Tổng quan. Admin vẫn xem để quản lý. Với xã/phường, vẫn cần đang trong khung giờ giải trình công bố điểm; mở giải trình không tự bật xếp hạng. Không thay đổi điểm, hồ sơ hoặc lịch giải trình.
+
+Kiểm tra: **63 bài kiểm tra tự động đạt**, bao gồm quyền admin, bật/tắt, mặc định đóng và giữ công tắc khi thay thiết lập khác.
 
 ## Công bố điểm và chế độ quan sát v1.7.2
 

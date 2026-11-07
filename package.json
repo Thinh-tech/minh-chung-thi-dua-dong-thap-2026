@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.7.2",
-  "releaseNote": "Khóa công bố điểm và xếp hạng xã phường theo đợt giải trình; bổ sung chế độ quan sát chỉ đọc."
+  "version": "1.7.3",
+  "releaseNote": "Admin chủ động bật/tắt công bố bảng xếp hạng các đơn vị."
 }

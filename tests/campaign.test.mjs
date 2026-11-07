@@ -15,7 +15,7 @@ test('Vietnam explanation window is closed by default, opens at the start, and c
  for(const invalid of [{explanationStart:''},{explanationEnd:'2026-02-31T10:00'},{explanationStart:window.explanationEnd}])assert.equal(explanationsOpen({...window,...invalid},start),false);
 });
 test('Settings validate calendar dates and preserve a scheduled window when an older client only changes intake',()=>{
- const base={locked:false,deadline:'',...window};assert.deepEqual(normalizeCampaign({locked:true,deadline:''},base),{...base,locked:true});
+ const base={locked:false,deadline:'',...window};assert.deepEqual(normalizeCampaign({locked:true,deadline:''},base),{...base,locked:true,rankingsEnabled:false});
  for(const bad of [{explanationStart:''},{explanationEnd:''},{explanationEnd:window.explanationStart},{explanationEnd:'2026-02-31T10:00'},{explanationsEnabled:'yes'},{deadline:'2026-02-31T10:00'}])assert.throws(()=>normalizeCampaign({...base,...bad}));
  assert.equal(normalizeCampaign({locked:true,deadline:''}).explanationsEnabled,false);
 });
@@ -42,4 +42,18 @@ test('Campaign and export callables enforce admin access, preserve unrelated set
  await f.setCampaign({locked:false,deadline:''},{admin:true});assert.equal(saved.resetJob,'kept');assert.equal(saved.explanationStart,window.explanationStart);
  await f.authorizeCompetitionExport({}, {admin:true});assert(audits.includes('Xuất báo cáo thi đua'));
  saved.resetInProgress=true;await assert.rejects(()=>f.setCampaign({locked:true,deadline:''},{admin:true}));assert.equal(saved.locked,false);
+});
+
+test('Ranking publication defaults closed, validates booleans and survives unrelated campaign changes',async()=>{
+ const base={locked:false,deadline:'',rankingsEnabled:true};
+ assert.equal(normalizeCampaign({locked:true,deadline:''},base).rankingsEnabled,true);
+ assert.equal(normalizeCampaign({locked:false,deadline:''}).rankingsEnabled,false);
+ assert.equal(normalizeCampaign({...base,rankingsEnabled:false},base).rankingsEnabled,false);
+ assert.throws(()=>normalizeCampaign({...base,rankingsEnabled:'true'}));
+ let saved={...base},audits=[];const db={doc:path=>({path}),runTransaction:async fn=>fn({get:async()=>({data:()=>saved}),set:(ref,value)=>saved={...saved,...value}})};
+ const call=(fn,adminOnly)=>async(d,a)=>{if(adminOnly&&!a.admin)throw Error('admin only');return fn(d,a)};
+ const f=campaignFunctions({db,call,log:(...args)=>audits.push(args)});
+ await assert.rejects(()=>f.setCampaign({...base,rankingsEnabled:false},staff));assert.equal(saved.rankingsEnabled,true);
+ await f.setCampaign({...base,rankingsEnabled:false},{admin:true});assert.equal(saved.rankingsEnabled,false);
+ await f.setCampaign({...base,rankingsEnabled:true},{admin:true});assert.equal(saved.rankingsEnabled,true);assert.equal(audits.length,2);
 });

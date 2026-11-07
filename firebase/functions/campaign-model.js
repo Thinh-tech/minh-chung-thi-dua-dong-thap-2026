@@ -12,9 +12,11 @@ export function explanationWindow(campaign,now=Date.now()){
 export function explanationsOpen(campaign,now=Date.now()){return !campaign.resetInProgress&&explanationWindow(campaign,now)==='open';}
 export function normalizeCampaign(data,previous={}){
  if(typeof data.locked!=='boolean'||typeof data.deadline!=='string'||(data.deadline&&!validTime(data.deadline)))throw Error('Thiết lập hoặc hạn nộp không hợp lệ.');
+ const rankingsEnabled=data.rankingsEnabled??previous.rankingsEnabled??false;
+ if(typeof rankingsEnabled!=='boolean')throw Error('Thiết lập công bố xếp hạng không hợp lệ.');
  const enabled=data.explanationsEnabled??previous.explanationsEnabled??false,start=data.explanationStart??previous.explanationStart??'',end=data.explanationEnd??previous.explanationEnd??'';
  if(typeof enabled!=='boolean'||typeof start!=='string'||typeof end!=='string'||(start&&!validTime(start))||(end&&!validTime(end)))throw Error('Thời gian giải trình không hợp lệ.');
  if(enabled&&(!start||!end))throw Error('Chọn đủ thời gian bắt đầu và kết thúc giải trình.');
  if(start&&end&&vnTime(start)>=vnTime(end))throw Error('Kết thúc giải trình phải sau thời gian bắt đầu.');
- return {locked:data.locked,deadline:data.deadline,explanationsEnabled:enabled,explanationStart:start,explanationEnd:end};
+ return {locked:data.locked,deadline:data.deadline,rankingsEnabled,explanationsEnabled:enabled,explanationStart:start,explanationEnd:end};
 }

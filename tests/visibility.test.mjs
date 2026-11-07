@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {canViewScores,publicSubmission,assertWritable,writeSubmissionView} from '../firebase/functions/visibility-model.js';
+import {canViewScores,canViewRankings,publicSubmission,assertWritable,writeSubmissionView} from '../firebase/functions/visibility-model.js';
 import {Store} from '../src/store.js';
 const campaign={explanationsEnabled:true,explanationStart:'2026-11-05T08:00',explanationEnd:'2026-11-05T17:00'},start=Date.parse('2026-11-05T01:00:00Z'),end=Date.parse('2026-11-05T10:00:00Z');
 test('Commune score access follows the active explanation window including explicit closure and reset',()=>{
@@ -29,4 +29,16 @@ test('Observer cannot call application mutations, edit evidence, upload files or
  for(const run of [()=>s.call('setCampaign',{}),()=>s.save({}, {}, {},'draft'),()=>s.upload({}, {},{}),()=>s.updateSettings({}),()=>s.postExplanation({},{}),()=>s.send('admin','x'),()=>s.saveProfile({}),()=>s.savePublication({}),()=>s.submitResponse({}),()=>s.setBanner({}),()=>s.authorizeExport()])await assert.rejects(run);
  assert.doesNotThrow(()=>assertWritable({role:'unit'}));
  }finally{if(old===undefined)delete globalThis.localStorage;else globalThis.localStorage=old}
+});
+
+test('Rankings require explicit publication and commune score access; admin retains management access',()=>{
+ const now=start+1,commune={role:'unit',group:'g1'};
+ assert.equal(canViewRankings({role:'admin'},{},now),true);
+ for(const actor of [commune,{role:'unit',group:'g2'},{role:'staff'},{role:'observer'}]){
+  assert.equal(canViewRankings(actor,campaign,now),false);
+  assert.equal(canViewRankings(actor,{...campaign,rankingsEnabled:true},now),true);
+  assert.equal(canViewRankings(actor,{...campaign,rankingsEnabled:false},now),false);
+ }
+ assert.equal(canViewRankings(commune,{...campaign,rankingsEnabled:true},end),false);
+ assert.equal(canViewRankings(commune,{rankingsEnabled:true},now),false);
 });

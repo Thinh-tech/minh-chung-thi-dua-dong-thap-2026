@@ -3,6 +3,9 @@ export const isObserver=a=>a?.role==='observer';
 export function canViewScores(actor,campaign,now=Date.now()){
  return actor?.role!=='unit'||actor.group!=='g1'||explanationsOpen(campaign,now);
 }
+export function canViewRankings(actor,campaign,now=Date.now()){
+ return actor?.role==='admin'||(campaign.rankingsEnabled===true&&canViewScores(actor,campaign,now));
+}
 export function publicSubmission(row){
  const keys=['unitId','criterionId','criterionRevision','area','note','selfScore','links','files','status','revision','updatedAt','updatedBy'];
  const view=Object.fromEntries(keys.filter(k=>row[k]!==undefined).map(k=>[k,row[k]]));
