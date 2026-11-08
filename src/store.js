@@ -1,3 +1,4 @@
+import {installAudits,recentAudits} from './audit-store.js';
 import {isObserver,assertWritable} from '../firebase/functions/visibility-model.js';
 import {normalizeCampaign,assertCompetitionExport} from '../firebase/functions/campaign-model.js';
 import {prepareReview} from '../firebase/functions/review-model.js';
@@ -13,14 +14,14 @@ import {getFirestore,collection,onSnapshot,query,where,orderBy,limit,getDocs,get
 import {getFunctions,httpsCallable} from 'firebase/functions';
 import {getStorage,ref,uploadBytes,getBlob} from 'firebase/storage';
 export class Store{
- constructor(config,units,onChange){this.config=config;this.units=units;this.onChange=onChange;this.records={};this.criteria={};this.criterionChanges={};this.explanations={};this.explanationMessages={};this.messages=[];this.audits=[];this.stops=[];this.demo=!config.configured;this.settings={deadline:'',locked:false};if(!this.demo){const app=initializeApp(config.firebaseConfig);this.auth=getAuth(app);this.db=getFirestore(app);this.functions=getFunctions(app,config.region||'asia-southeast1');this.storage=getStorage(app)}else this.loadDemo();installSuite(this);installStaff(this);}
+ constructor(config,units,onChange){this.config=config;this.units=units;this.onChange=onChange;this.records={};this.criteria={};this.criterionChanges={};this.explanations={};this.explanationMessages={};this.messages=[];this.audits=[];this.stops=[];this.demo=!config.configured;this.settings={deadline:'',locked:false};if(!this.demo){const app=initializeApp(config.firebaseConfig);this.auth=getAuth(app);this.db=getFirestore(app);this.functions=getFunctions(app,config.region||'asia-southeast1');this.storage=getStorage(app)}else this.loadDemo();installSuite(this);installStaff(this);installAudits(this);}
  loadDemo(){try{const s=JSON.parse(localStorage.getItem('dt2026-demo')||'{}');this.records=s.records||{};this.criteria=s.criteria||{};this.criterionChanges=s.criterionChanges||{};this.explanations=s.explanations||{};this.explanationMessages=s.explanationMessages||{};this.messages=(s.messages||[]).filter(m=>m.expiresAt>Date.now());this.audits=s.audits||[];this.settings=s.settings||this.settings}catch{this.records={};this.messages=[];} }
  persist(){localStorage.setItem('dt2026-demo',JSON.stringify({records:this.records,criteria:this.criteria,criterionChanges:this.criterionChanges,explanations:this.explanations,explanationMessages:this.explanationMessages,messages:this.messages,audits:this.audits,settings:this.settings}));this.onChange();}
  async login(id,password){if(this.demo)throw Error('Chưa kết nối Firebase. Hãy dùng nút trải nghiệm.');if(password.startsWith('@')){try{return await signInWithEmailAndPassword(this.auth,'observer@minhchung.invalid',password)}catch(x){if(!['auth/invalid-credential','auth/user-not-found','auth/wrong-password'].includes(x.code))throw x}}await signInWithEmailAndPassword(this.auth,id+'@minhchung.invalid',password);}
  stopChat(){this.chatStop?.();this.chatStop=null;this.chatCallback=null;this.chatOther=null;}
- async logout(){this.stopScoped();this.stopChat();this.stopExplanation();this.stops.splice(0).forEach(f=>f());if(!this.demo)await signOut(this.auth);this.user=null;this.suiteUser=null;this.records={};this.archives=[];}
+ async logout(){this.stopAudits();this.stopScoped();this.stopChat();this.stopExplanation();this.stops.splice(0).forEach(f=>f());if(!this.demo)await signOut(this.auth);this.user=null;this.suiteUser=null;this.records={};this.archives=[];}
  async observe(onUser,onError){if(this.demo)return;onAuthStateChanged(this.auth,async authUser=>{
-  this.stopScoped();this.stopChat();this.stopExplanation();this.suiteUser=null;this.criteria={};this.explanations={};this.stops.splice(0).forEach(f=>f());this.records={};this.audits=[];this.archives=[];this.staffAccounts={};
+  this.stopAudits();this.stopScoped();this.stopChat();this.stopExplanation();this.suiteUser=null;this.criteria={};this.explanations={};this.stops.splice(0).forEach(f=>f());this.records={};this.audits=[];this.archives=[];this.staffAccounts={};
   if(!authUser){this.user=null;onUser(null);return}
   try{
    const token=await authUser.getIdTokenResult(true),profile=(await getDoc(doc(this.db,'users',authUser.uid))).data();
@@ -33,7 +34,7 @@ export class Store{
    this.stops.push(onSnapshot(collection(this.db,'criteria'),snap=>{this.criteria=Object.fromEntries(snap.docs.map(d=>[d.id,d.data()]));this.onChange()},onError));
    this.stops.push(onSnapshot(collection(this.db,'settings'),snap=>{this.settings=snap.docs.find(d=>d.id==='campaign')?.data()||this.settings;this.refreshScoreAccess();this.onChange()},onError));
    if(role==='admin'){
-    this.stops.push(onSnapshot(query(collection(this.db,'audits'),orderBy('at','desc'),limit(100)),snap=>{this.audits=snap.docs.map(d=>d.data());this.onChange()},onError));
+    this.watchAudits(onError);
     this.stops.push(onSnapshot(query(collection(this.db,'resetArchives'),orderBy('createdAt','desc'),limit(10)),snap=>{this.archives=snap.docs.map(d=>({id:d.id,...d.data()}));this.onChange()},onError));
    }
   }catch(error){onError(error);await signOut(this.auth)}
@@ -41,7 +42,7 @@ export class Store{
 
  async call(name,data){assertWritable(this.user);return (await httpsCallable(this.functions,name,{timeout:name==='commitDataReset'?540000:70000})(data)).data}
  async save(unit,c,data,status){assertWritable(this.user);if(!Number.isFinite(data.selfScore))throw Error('Vui lòng nhập điểm tự chấm, có thể nhập 0.');const key=unit.id+'__'+c.id;const prev=this.records[key];if(c.active===false)throw Error('Tiêu chí đã ngừng áp dụng.');if(!this.demo)return this.call('saveSubmission',{unitId:unit.id,criterionId:c.id,...data,status,criterionRevision:c.revision||0,revision:data.revision??prev?.revision??0});if(this.settings.locked||(this.settings.deadline&&Date.now()>new Date(this.settings.deadline+':00+07:00').getTime()))throw Error('Đợt thi đua đã khóa hoặc quá hạn nộp.');if(this.user.role!=='admin'&&this.user.id!==unit.id)throw Error('Bạn chỉ được sửa minh chứng của đơn vị mình.');if(prev&&['submitted','approved'].includes(prev.status))throw Error('Minh chứng đã gửi, cần quản trị viên trả lại để chỉnh sửa.');if((data.revision??0)!==(prev?.revision??0))throw Error('Dữ liệu vừa được cập nhật. Hãy mở lại minh chứng.');this.records[key]={...data,criterionRevision:c.revision||0,area:c.area,unitId:unit.id,criterionId:c.id,status,updatedAt:Date.now(),revision:(prev?.revision||0)+1,score:null,feedback:prev?.feedback||''};this.audit(status==='submitted'?'Gửi minh chứng':'Lưu bản nháp',unit.name,c.code);this.persist();}
- audit(action,unit,code){this.audits.unshift({action,unit,code,actor:this.user.name,at:Date.now()});this.audits=this.audits.slice(0,100)}
+ audit(action,unit,code){this.audits.unshift({action,unit,code,actor:this.user.name,at:Date.now()});this.audits=recentAudits(this.audits)}
  async review(unit,c,score,feedback,status,revision){if(!this.demo)return this.call('reviewSubmission',{unitId:unit.id,criterionId:c.id,score,feedback,status,revision});const key=unit.id+'__'+c.id,p=this.records[key],review=prepareReview({...this.user,uid:this.user.id,admin:this.user.role==='admin'},p,{score,feedback,status,revision},c);this.records[key]={...p,...review.update,updatedAt:Date.now()};this.audit(review.audit.action,unit.name,c.code);Object.assign(this.audits[0],review.audit);this.persist();}
  async upload(unit,c,file){assertWritable(this.user);validateUpload(file);if(this.demo){if(file.size>1024*1024)throw Error('Bản trải nghiệm chỉ nhận tệp tối đa 1 MB. Khi kết nối Firebase: ảnh 5 MB, tài liệu 10 MB.');const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)});return {name:file.name,size:file.size,data};}const path=`evidence/${unit.id}/${c.id}/${crypto.randomUUID()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;await uploadBytes(ref(this.storage,path),file,{contentType:file.type});return {name:file.name,size:file.size,path};}
  async download(file){if(this.demo)return fetch(file.data).then(r=>r.blob());return getBlob(ref(this.storage,file.path));}

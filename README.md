@@ -1,6 +1,14 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.7.4**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.7.5**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Nhật ký hoạt động 30 ngày v1.7.5
+
+Admin vào **Nhật ký hoạt động** để xem các hoạt động trong 30 ngày gần nhất, mới nhất trước. Ban đầu tải 100 dòng; dùng **Xem thêm 100 hoạt động** để xem tiếp, không còn bị giới hạn chỉ 100 dòng. Nhật ký mới tiếp tục đồng bộ theo thời gian thực. Khi đăng xuất hoặc đổi tài khoản, dừng theo dõi và xóa dữ liệu nhật ký khỏi phiên ứng dụng.
+
+Kiểm tra cấu hình Firebase hiện tại cho thấy nhật ký không có chính sách tự xóa theo ngày. Bản này mở phạm vi tra cứu 30 ngày và giữ nguyên dữ liệu lịch sử đã lưu; không thêm tác vụ xóa nhật ký. Nhật ký cũ đã bị xóa từ trước (nếu có) không thể tự khôi phục. Tin nhắn vẫn theo chính sách 7 ngày riêng.
+
+Kiểm tra: **66 bài kiểm tra tự động đạt**, gồm ranh giới 30 ngày, tải hơn 100 dòng, dữ liệu trải nghiệm và chặn callback cũ sau khi đổi phiên.
 
 ## Khóa xem điểm tất cả đơn vị v1.7.4
 
