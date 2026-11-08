@@ -1,7 +1,7 @@
 {
-  "version": "1.7.3",
-  "note": "Admin chủ động bật/tắt công bố bảng xếp hạng các đơn vị.",
-  "updatedAt": "2026-11-07T06:08:27.243Z",
-  "fingerprint": "706e19a48ed29b41f39f20a35de03e9c4d1e00760e4909127e919ef94505164e",
-  "sourceNote": "Admin chủ động bật/tắt công bố bảng xếp hạng các đơn vị."
+  "version": "1.7.4",
+  "note": "Mở rộng khóa xem điểm chấm cho tất cả khối đơn vị theo thời gian giải trình.",
+  "updatedAt": "2026-11-08T09:32:45.291Z",
+  "fingerprint": "d9f01ee7f39d90bb8ae3926c9cdda8029812361af6550dc801948f966ef2e7fb",
+  "sourceNote": "Mở rộng khóa xem điểm chấm cho tất cả khối đơn vị theo thời gian giải trình."
 }
