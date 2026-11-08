@@ -1,6 +1,12 @@
 # Hệ thống minh chứng thi đua tỉnh Đoàn Đồng Tháp năm 2026
 
-Phiên bản **v1.7.3**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+Phiên bản **v1.7.4**. Menu trái chia thành Không gian làm việc, Quản trị / Hỗ trợ và Tiện ích; nút ☰ ở đầu trang ẩn/hiện menu và ghi nhớ lựa chọn. Tài khoản đơn vị tự đổi mật khẩu trong Trung tâm tài khoản; admin đổi mật khẩu tại Quản lý tài khoản.
+
+## Khóa xem điểm tất cả đơn vị v1.7.4
+
+Từ v1.7.4, mọi tài khoản đơn vị trong cả năm bộ tiêu chí đều áp dụng khóa điểm đã chấm: xã/phường, cao đẳng/đại học, Công an Tỉnh, cơ quan Đảng và Ủy ban Nhân dân Tỉnh. Chỉ mở xem khi admin bật và đang trong khung giờ giải trình hợp lệ; trước giờ, hết giờ hoặc admin tắt thì tự ẩn. Điểm tự chấm, minh chứng và tiến độ vẫn xem được. Bảng xếp hạng vẫn cần công tắc công bố riêng. Quyền admin, cán bộ và quan sát viên không thay đổi. Quy tắc đọc Firebase được cập nhật để chặn tải điểm gốc ngoài giờ cho mọi đơn vị; điểm và hồ sơ gốc được giữ nguyên.
+
+Kiểm tra: **63 bài kiểm tra tự động đạt**, mở rộng kiểm tra cả năm khối tại thời điểm trước/bắt đầu/kết thúc, tắt tiếp nhận, lịch không hợp lệ và đang đặt lại.
 
 ## Công bố bảng xếp hạng v1.7.3
 

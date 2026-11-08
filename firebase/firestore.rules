@@ -5,7 +5,7 @@ service cloud.firestore {
   function admin() { return member() && request.auth.token.admin == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'; }
   function observer() { return member() && request.auth.token.observer == true && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'observer'; }
   function scoreWindow() { let c = get(/databases/$(database)/documents/settings/campaign).data; return c.get('explanationsEnabled',false) == true && c.get('resetInProgress',false) == false && c.get('explanationStartsAt',null) is timestamp && c.get('explanationEndsAt',null) is timestamp && request.time >= c.explanationStartsAt && request.time < c.explanationEndsAt; }
-  function unitScores() { return unitMember() && (get(/databases/$(database)/documents/units/$(request.auth.token.unitId)).data.group != 'g1' || scoreWindow()); }
+  function unitScores() { return unitMember() && scoreWindow(); }
   function staff() { return member() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'staff'; }
   function staffScope(area, permission) { return staff() && permission in get(/databases/$(database)/documents/users/$(request.auth.uid)).data.permissions && area in get(/databases/$(database)/documents/users/$(request.auth.uid)).data.areas; }
   function unitMember() { return member() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'unit'; }

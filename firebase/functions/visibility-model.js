@@ -1,7 +1,7 @@
 import {explanationsOpen} from './campaign-model.js';
 export const isObserver=a=>a?.role==='observer';
 export function canViewScores(actor,campaign,now=Date.now()){
- return actor?.role!=='unit'||actor.group!=='g1'||explanationsOpen(campaign,now);
+ return actor?.role!=='unit'||explanationsOpen(campaign,now);
 }
 export function canViewRankings(actor,campaign,now=Date.now()){
  return actor?.role==='admin'||(campaign.rankingsEnabled===true&&canViewScores(actor,campaign,now));

@@ -3,13 +3,16 @@ import assert from 'node:assert/strict';
 import {canViewScores,canViewRankings,publicSubmission,assertWritable,writeSubmissionView} from '../firebase/functions/visibility-model.js';
 import {Store} from '../src/store.js';
 const campaign={explanationsEnabled:true,explanationStart:'2026-11-05T08:00',explanationEnd:'2026-11-05T17:00'},start=Date.parse('2026-11-05T01:00:00Z'),end=Date.parse('2026-11-05T10:00:00Z');
-test('Commune score access follows the active explanation window including explicit closure and reset',()=>{
- const commune={role:'unit',group:'g1'};
- assert.equal(canViewScores(commune,{},start),false);assert.equal(canViewScores(commune,campaign,start-1),false);
- assert.equal(canViewScores(commune,campaign,start),true);assert.equal(canViewScores(commune,campaign,end),false);
- assert.equal(canViewScores(commune,{...campaign,explanationsEnabled:false},start),false);
- assert.equal(canViewScores(commune,{...campaign,resetInProgress:true},start),false);
- for(const actor of [{role:'admin'},{role:'staff'},{role:'observer'},{role:'unit',group:'g2'}])assert.equal(canViewScores(actor,{},start),true);
+test('All five unit groups have score access only during the allowed explanation window',()=>{
+ for(const group of ['g1','g2','g3','g4','g5',undefined]){
+  const actor={role:'unit',group};
+  assert.equal(canViewScores(actor,{},start),false);assert.equal(canViewScores(actor,campaign,start-1),false);
+  assert.equal(canViewScores(actor,campaign,start),true);assert.equal(canViewScores(actor,campaign,end-1),true);assert.equal(canViewScores(actor,campaign,end),false);
+  assert.equal(canViewScores(actor,{...campaign,explanationsEnabled:false},start),false);
+  assert.equal(canViewScores(actor,{...campaign,resetInProgress:true},start),false);
+  assert.equal(canViewScores(actor,{...campaign,explanationEnd:''},start),false);
+ }
+ for(const actor of [{role:'admin'},{role:'staff'},{role:'observer'}])assert.equal(canViewScores(actor,{},start),true);
 });
 test('Public submission strips grades, approved feedback and unrecognized fields while preserving editable evidence and revisions',()=>{
  const row={unitId:'dv001',criterionId:'g1-001',status:'approved',revision:4,selfScore:3,score:2,reviewedBy:'private',feedback:'Điểm duyệt 2',previousScore:1,note:'Hồ sơ',files:[{path:'a'}],links:[]};
@@ -31,7 +34,7 @@ test('Observer cannot call application mutations, edit evidence, upload files or
  }finally{if(old===undefined)delete globalThis.localStorage;else globalThis.localStorage=old}
 });
 
-test('Rankings require explicit publication and commune score access; admin retains management access',()=>{
+test('Rankings require explicit publication and unit score access; admin retains management access',()=>{
  const now=start+1,commune={role:'unit',group:'g1'};
  assert.equal(canViewRankings({role:'admin'},{},now),true);
  for(const actor of [commune,{role:'unit',group:'g2'},{role:'staff'},{role:'observer'}]){
@@ -39,6 +42,8 @@ test('Rankings require explicit publication and commune score access; admin reta
   assert.equal(canViewRankings(actor,{...campaign,rankingsEnabled:true},now),true);
   assert.equal(canViewRankings(actor,{...campaign,rankingsEnabled:false},now),false);
  }
- assert.equal(canViewRankings(commune,{...campaign,rankingsEnabled:true},end),false);
- assert.equal(canViewRankings(commune,{rankingsEnabled:true},now),false);
+ for(const group of ['g1','g2','g3','g4','g5']){
+  assert.equal(canViewRankings({role:'unit',group},{...campaign,rankingsEnabled:true},end),false);
+  assert.equal(canViewRankings({role:'unit',group},{rankingsEnabled:true},now),false);
+ }
 });
