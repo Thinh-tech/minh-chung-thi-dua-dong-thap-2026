@@ -1,7 +1,7 @@
 {
-  "version": "1.7.5",
-  "note": "Nhật ký admin trong 30 ngày, xem thêm hoạt động và giữ dữ liệu đã lưu.",
-  "updatedAt": "2026-11-08T09:49:23.925Z",
-  "fingerprint": "f111d5324533541df6da41925eb579485b3b1434524b9cb767f23e99e2c9a446",
-  "sourceNote": "Nhật ký admin trong 30 ngày, xem thêm hoạt động và giữ dữ liệu đã lưu."
+  "version": "1.7.7",
+  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
+  "updatedAt": "2026-11-11T07:12:31.006Z",
+  "fingerprint": "d0a73726bb533b71194946c8e7a66cd6dc653c84da3d61c15fd3b20f71ddbfa5",
+  "sourceNote": "Đơn vị chỉ xem điểm của mình, mở xem điểm đơn vị khác khi công bố bảng xếp hạng."
 }
