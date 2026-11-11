@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {canViewScores,canViewRankings,publicSubmission,assertWritable,writeSubmissionView} from '../firebase/functions/visibility-model.js';
+import {canViewScores,canViewRankings,submissionScoreScope,canViewUnitScore,publicSubmission,assertWritable,writeSubmissionView} from '../firebase/functions/visibility-model.js';
 import {Store} from '../src/store.js';
 const campaign={explanationsEnabled:true,explanationStart:'2026-11-05T08:00',explanationEnd:'2026-11-05T17:00'},start=Date.parse('2026-11-05T01:00:00Z'),end=Date.parse('2026-11-05T10:00:00Z');
 test('All five unit groups have score access only during the allowed explanation window',()=>{
@@ -46,4 +46,19 @@ test('Rankings require explicit publication and unit score access; admin retains
   assert.equal(canViewRankings({role:'unit',group},{...campaign,rankingsEnabled:true},end),false);
   assert.equal(canViewRankings({role:'unit',group},{rankingsEnabled:true},now),false);
  }
+});
+
+test('A unit only sees its own awarded scores until rankings open within the explanation window',()=>{
+ const unit={role:'unit',id:'dv001'};
+ const published={...campaign,rankingsEnabled:true};
+ assert.equal(submissionScoreScope(unit,campaign,start-1),'hidden');
+ assert.equal(submissionScoreScope(unit,campaign,start),'own');
+ assert.equal(canViewUnitScore(unit,campaign,'dv001',start),true);
+ assert.equal(canViewUnitScore(unit,campaign,'dv002',start),false);
+ assert.equal(submissionScoreScope(unit,published,start),'all');
+ assert.equal(canViewUnitScore(unit,published,'dv002',start),true);
+ assert.equal(canViewUnitScore(unit,{...published,rankingsEnabled:false},'dv002',start),false);
+ assert.equal(canViewUnitScore(unit,published,'dv001',end),false);
+ assert.equal(canViewUnitScore(unit,published,'dv002',end),false);
+ assert.equal(canViewUnitScore({role:'admin'},campaign,'dv002',end),true);
 });

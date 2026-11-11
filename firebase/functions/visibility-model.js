@@ -6,6 +6,15 @@ export function canViewScores(actor,campaign,now=Date.now()){
 export function canViewRankings(actor,campaign,now=Date.now()){
  return actor?.role==='admin'||(campaign.rankingsEnabled===true&&canViewScores(actor,campaign,now));
 }
+export function submissionScoreScope(actor,campaign,now=Date.now()){
+ if(!canViewScores(actor,campaign,now))return 'hidden';
+ if(actor?.role==='unit'&&!canViewRankings(actor,campaign,now))return 'own';
+ return 'all';
+}
+export function canViewUnitScore(actor,campaign,unitId,now=Date.now()){
+ const scope=submissionScoreScope(actor,campaign,now);
+ return scope==='all'||(scope==='own'&&unitId!=null&&unitId===(actor.id??actor.unitId));
+}
 export function publicSubmission(row){
  const keys=['unitId','criterionId','criterionRevision','area','note','selfScore','links','files','status','revision','updatedAt','updatedBy'];
  const view=Object.fromEntries(keys.filter(k=>row[k]!==undefined).map(k=>[k,row[k]]));

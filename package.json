@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.7.5",
-  "releaseNote": "Nhật ký admin trong 30 ngày, xem thêm hoạt động và giữ dữ liệu đã lưu."
+  "version": "1.7.7",
+  "releaseNote": "Đơn vị chỉ xem điểm của mình, mở xem điểm đơn vị khác khi công bố bảng xếp hạng."
 }
