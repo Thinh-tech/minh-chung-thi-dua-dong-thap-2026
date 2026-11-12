@@ -16,6 +16,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.7.7",
-  "releaseNote": "Đơn vị chỉ xem điểm của mình, mở xem điểm đơn vị khác khi công bố bảng xếp hạng."
+  "version": "1.7.8",
+  "releaseNote": "Admin xuất Excel lịch sử thao tác và thay đổi điểm của cán bộ."
 }

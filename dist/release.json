@@ -1,7 +1,7 @@
 {
-  "version": "1.7.7",
-  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
-  "updatedAt": "2026-11-11T07:12:31.006Z",
-  "fingerprint": "d0a73726bb533b71194946c8e7a66cd6dc653c84da3d61c15fd3b20f71ddbfa5",
-  "sourceNote": "Đơn vị chỉ xem điểm của mình, mở xem điểm đơn vị khác khi công bố bảng xếp hạng."
+  "version": "1.7.8",
+  "note": "Admin xuất Excel lịch sử thao tác và thay đổi điểm của cán bộ.",
+  "updatedAt": "2026-11-12T04:19:30.700Z",
+  "fingerprint": "41418cc210811487f2838c579efb24660b842438bb75e923a9ec98acfd45db93",
+  "sourceNote": "Admin xuất Excel lịch sử thao tác và thay đổi điểm của cán bộ."
 }
