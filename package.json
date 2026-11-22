@@ -11,11 +11,12 @@
     "exceljs": "^4.4.0",
     "mammoth": "1.13.0",
     "dompurify": "3.4.17",
-    "pdfjs-dist": "6.4.299"
+    "pdfjs-dist": "6.4.299",
+    "jszip": "3.10.2"
   },
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.7.8",
-  "releaseNote": "Admin xuất Excel lịch sử thao tác và thay đổi điểm của cán bộ."
+  "version": "1.8.1",
+  "releaseNote": "Admin chọn tải báo cáo, tệp minh chứng hàng loạt và đóng gói ZIP."
 }

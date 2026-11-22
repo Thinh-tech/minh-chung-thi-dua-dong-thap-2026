@@ -1,7 +1,7 @@
 {
-  "version": "1.7.8",
-  "note": "Admin xuất Excel lịch sử thao tác và thay đổi điểm của cán bộ.",
-  "updatedAt": "2026-11-12T04:19:30.700Z",
-  "fingerprint": "41418cc210811487f2838c579efb24660b842438bb75e923a9ec98acfd45db93",
-  "sourceNote": "Admin xuất Excel lịch sử thao tác và thay đổi điểm của cán bộ."
+  "version": "1.8.1",
+  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
+  "updatedAt": "2026-11-22T03:31:08.974Z",
+  "fingerprint": "b04b9b98e41cd2c42f5aa43f346312c3b75259a7b40484c00a5d98248380756f",
+  "sourceNote": "Admin chọn tải báo cáo, tệp minh chứng hàng loạt và đóng gói ZIP."
 }
