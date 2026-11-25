@@ -17,6 +17,6 @@
   "devDependencies": {
     "esbuild": "^0.25.0"
   },
-  "version": "1.8.1",
-  "releaseNote": "Admin chọn tải báo cáo, tệp minh chứng hàng loạt và đóng gói ZIP."
+  "version": "1.8.2",
+  "releaseNote": "Admin tải nhiều đơn vị theo chỉ tiêu và lĩnh vực, xuất Excel hoặc ZIP."
 }
