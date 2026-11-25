@@ -1,7 +1,7 @@
 {
-  "version": "1.8.1",
-  "note": "Cập nhật hệ thống và cải thiện trải nghiệm sử dụng.",
-  "updatedAt": "2026-11-22T03:31:08.974Z",
-  "fingerprint": "b04b9b98e41cd2c42f5aa43f346312c3b75259a7b40484c00a5d98248380756f",
-  "sourceNote": "Admin chọn tải báo cáo, tệp minh chứng hàng loạt và đóng gói ZIP."
+  "version": "1.8.2",
+  "note": "Admin tải nhiều đơn vị theo chỉ tiêu và lĩnh vực, xuất Excel hoặc ZIP.",
+  "updatedAt": "2026-11-25T02:01:05.526Z",
+  "fingerprint": "4d8e7386171bf820fdf10ae08e0ff2fc588e8d20b23601508e9ef9c6e963d72a",
+  "sourceNote": "Admin tải nhiều đơn vị theo chỉ tiêu và lĩnh vực, xuất Excel hoặc ZIP."
 }
